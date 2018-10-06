@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/zoomLayout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="10dp">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/textView_zoom_message"/>
+
+	<RadioGroup
+		android:id="@+id/zoomRadioGroup"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<RadioButton
+			android:id="@+id/zoom0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="0"
+			android:text="@string/radioButton_zoom_0.125"/>
+
+		<RadioButton
+			android:id="@+id/zoom1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="1"
+			android:text="@string/radioButton_zoom_0.25"/>
+
+		<RadioButton
+			android:id="@+id/zoom2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="2"
+			android:text="@string/radioButton_zoom_0.5"/>
+
+		<RadioButton
+			android:id="@+id/zoom3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="3"
+			android:text="@string/radioButton_zoom_1.0"/>
+
+		<RadioButton
+			android:id="@+id/zoom4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="4"
+			android:text="@string/radioButton_zoom_2.0"/>
+
+		<RadioButton
+			android:id="@+id/zoom5"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="5"
+			android:text="@string/radioButton_zoom_4.0"/>
+
+		<RadioButton
+			android:id="@+id/zoom6"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tag="6"
+			android:text="@string/radioButton_zoom_8.0"/>
+	</RadioGroup>
+</LinearLayout>

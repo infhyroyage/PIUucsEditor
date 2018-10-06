@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:id="@+id/positionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/positionRadioButtonRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="1"
+            android:text="@string/textView_listView_subTitle_right"/>
+
+        <ImageView
+            android:id="@+id/positionImageViewRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:paddingBottom="20dp"/>
+
+        <RadioButton
+            android:id="@+id/positionRadioButtonLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="0"
+            android:text="@string/textView_listView_subTitle_left"/>
+
+        <ImageView
+            android:id="@+id/positionImageViewLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+</ScrollView>

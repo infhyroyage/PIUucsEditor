@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.MainActivity">
+
+    <com.editor.ucs.piu.chart.ChartScrollView
+        android:id="@+id/chartScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/mainAdView"
+        android:background="#505050">
+
+        <com.editor.ucs.piu.chart.ChartLayout
+            android:id="@+id/chartLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.editor.ucs.piu.chart.NoteLayout
+                android:id="@+id/noteLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.editor.ucs.piu.chart.PointerLayout
+                android:id="@+id/pointerLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <com.editor.ucs.piu.chart.SelectedAreaLayout
+                android:id="@+id/selectedAreaLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </com.editor.ucs.piu.chart.ChartLayout>
+    </com.editor.ucs.piu.chart.ChartScrollView>
+
+	<com.editor.ucs.piu.buttons.ButtonsLayout
+		android:id="@+id/buttonsLayout"
+		android:layout_width="90dp"
+		android:layout_height="match_parent"
+        android:layout_above="@id/mainAdView"
+		android:orientation="vertical">
+
+        <TextView
+			android:id="@+id/bpmTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="11sp"
+            android:visibility="gone"/>
+
+		<TextView
+			android:id="@+id/delayTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="11sp"
+            android:visibility="gone"/>
+
+		<TextView
+			android:id="@+id/splitTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="11sp"
+            android:visibility="gone"/>
+
+		<Spinner
+			android:id="@+id/sideBarSpinner"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:entries="@array/spinner_entries"
+			android:visibility="gone"/>
+
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveTop"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_top"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveUpperBlock"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_upperBlock"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveUpperBeat"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveUpperRow"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_upperRow"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonScrollPointer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_scroll_pointer"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveLowerRow"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_lowerRow"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveLowerBeat"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveLowerBlock"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_lowerBlock"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonMoveBottom"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_move_bottom"
+					android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonEditUndo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_edit_undo"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonEditRedo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_edit_redo"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularToggleButton
+					android:id="@+id/toggleButtonEditSelect"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:checked="false"
+					android:textOff="@string/toggleButton_edit_selectOff"
+					android:textOn="@string/toggleButton_edit_selectOn"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularToggleButton
+					android:id="@+id/toggleButtonEditLock"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:checked="false"
+					android:textOff="@string/toggleButton_edit_lockOff"
+					android:textOn="@string/toggleButton_edit_lockOn"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditUpDown"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_upDown"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditLeftRight"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_leftRight"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditDelete"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_delete"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditCut"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_cut"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditCopy"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_copy"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonEditPaste"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_edit_paste"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonBlockAdd"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_block_add"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonBlockSetting"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_block_setting"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonBlockSplit"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_block_split"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonBlockMerge"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_block_merge"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonBlockDelete"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_block_delete"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonFileNew"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_file_new"
+					android:textSize="11sp"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonFileOpen"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_file_open"
+					android:textSize="11sp"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonFileRename"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_file_rename"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonFileSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_file_save"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonFileSaveAs"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_file_saveAs"
+                    android:textSize="11sp"
+                    android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+                    android:id="@+id/buttonFileDownload"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_file_download"
+                    android:textSize="11sp"/>
+
+                <com.editor.ucs.piu.buttons.RectangularToggleButton
+					android:id="@+id/toggleButtonOtherNoteSound"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:checked="false"
+					android:textOff="@string/toggleButton_other_noteSoundOff"
+					android:textOn="@string/toggleButton_other_noteSoundOn"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonOtherPlayInitially"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_other_playInitially"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonOtherPlayCurrently"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_other_playCurrently"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonOtherInterrupt"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_other_interrupt"
+					android:textSize="11sp"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonOtherZoom"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_other_zoom"
+					android:textSize="11sp"
+					android:theme="@style/MainTheme"
+					android:visibility="gone"/>
+
+                <com.editor.ucs.piu.buttons.RectangularButton
+					android:id="@+id/buttonOtherSetting"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:text="@string/button_other_setting"
+					android:textSize="11sp"/>
+
+			</LinearLayout>
+		</ScrollView>
+	</com.editor.ucs.piu.buttons.ButtonsLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/mainAdView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/adView_main"/>
+</RelativeLayout>

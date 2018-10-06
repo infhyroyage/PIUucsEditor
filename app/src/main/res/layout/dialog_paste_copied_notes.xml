@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/copiedChartLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="10dp"
+	>
+
+	<TextView
+		android:id="@+id/copiedChartMessage"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:text="@string/textView_copiedChart_message"/>
+
+	<ScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/copiedChartButtonsLayout"
+		android:layout_below="@+id/copiedChartMessage"
+		android:layout_centerHorizontal="true">
+
+		<FrameLayout
+			android:id="@+id/copiedChartBlockLayout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+			<FrameLayout
+				android:id="@+id/copiedChartNoteLayout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+		</FrameLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/copiedChartButtonsLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/copiedChartUpDownButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/button_copied_upDown"/>
+
+		<Button
+			android:id="@+id/copiedChartLeftRightButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/button_copied_leftRight"/>
+	</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/colorChangeLayout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="10dp">
+
+	<TableLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:stretchColumns="2">
+
+		<TableRow
+			android:id="@+id/colorChangeAlphaTableRow"
+			android:layout_marginBottom="15dp"
+			android:gravity="center_vertical">
+			<TextView
+				android:id="@+id/colorChangeAlphaTextView"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:text="@string/textView_color_alpha"/>
+
+			<Button
+				android:id="@+id/colorChangeAlphaMinusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_minus"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<SeekBar
+					android:id="@+id/colorChangeAlphaSeekBar"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:max="255"/>
+			</LinearLayout>
+
+			<Button
+				android:id="@+id/colorChangeAlphaPlusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_plus"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_marginBottom="15dp"
+			android:gravity="center_vertical">
+			<TextView
+				android:id="@+id/colorChangeRedTextView"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:text="@string/textView_color_alpha"/>
+
+			<Button
+				android:id="@+id/colorChangeRedMinusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_minus"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<SeekBar
+					android:id="@+id/colorChangeRedSeekBar"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:max="255"/>
+			</LinearLayout>
+
+			<Button
+				android:id="@+id/colorChangeRedPlusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_plus"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_marginBottom="15dp"
+			android:gravity="center_vertical">
+			<TextView
+				android:id="@+id/colorChangeGreenTextView"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:text="@string/textView_color_green"/>
+
+			<Button
+				android:id="@+id/colorChangeGreenMinusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_minus"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<SeekBar
+					android:id="@+id/colorChangeGreenSeekBar"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:max="255"/>
+			</LinearLayout>
+
+			<Button
+				android:id="@+id/colorChangeGreenPlusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_plus"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_marginBottom="15dp"
+			android:gravity="center_vertical">
+			<TextView
+				android:id="@+id/colorChangeBlueTextView"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:text="@string/textView_color_green"/>
+
+			<Button
+				android:id="@+id/colorChangeBlueMinusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_minus"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<SeekBar
+					android:id="@+id/colorChangeBlueSeekBar"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:max="255"/>
+			</LinearLayout>
+
+			<Button
+				android:id="@+id/colorChangeBluePlusButton"
+				android:layout_width="30dp"
+				android:layout_height="wrap_content"
+				android:text="@string/button_color_plus"/>
+		</TableRow>
+	</TableLayout>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<FrameLayout
+			android:id="@+id/colorChangeFrom"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_marginEnd="50dp"
+			android:layout_marginRight="50dp"
+			android:layout_toLeftOf="@+id/colorChangeArrow"
+			android:layout_toStartOf="@+id/colorChangeArrow">
+		</FrameLayout>
+
+		<TextView
+			android:id="@+id/colorChangeArrow"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:gravity="center"
+			android:text="@string/common_to"
+			android:textSize="20sp"/>
+
+		<FrameLayout
+			android:id="@+id/colorChangeTo"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_marginLeft="50dp"
+			android:layout_marginStart="50dp"
+			android:layout_toEndOf="@+id/colorChangeArrow"
+			android:layout_toRightOf="@+id/colorChangeArrow">
+		</FrameLayout>
+	</RelativeLayout>
+
+</LinearLayout>
