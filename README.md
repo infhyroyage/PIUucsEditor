@@ -3,7 +3,7 @@
 既存Windows版ソフトウェアの[StepEdit Lite](http://www.piugame.com/piu.ucs/ucs.intro/ucs.intro.php)のAndroid版アプリを制作
 
 ## インストール
-[こちら](https://github.com/infhyroyage/UCSEdtr/blob/master/app/release/app-release.apk)からapkファイルをダウンロードし、**Android OS 2.2以上**のAndroid端末上でapkファイルを展開。
+[こちら](https://github.com/infhyroyage/PIUucsEditor/raw/master/app/release/app-release.apk)からapkファイルをダウンロードし、**Android OS 2.2以上**のAndroid端末上でapkファイルを展開。
 
 ## StepEdit Liteとの同等機能
 * 譜面編集
