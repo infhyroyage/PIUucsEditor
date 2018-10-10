@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.oss.licenses.plugin'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.editor.ucs.piu"
         minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 180909
-        versionName '18.09.09'
+        targetSdkVersion 26
+        versionCode 181010
+        versionName '18.10.10'
     }
     lintOptions {
         checkReleaseBuilds false
@@ -24,10 +24,10 @@ dependencies {
     implementation files('libs/fastscroll_v1.2_20160903.jar')
 
     // AppCompat
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 
     // Preference
-    implementation 'com.android.support:preference-v7:27.1.1'
+    implementation 'com.android.support:preference-v7:26.1.0'
 
     // Android File Chooser
     implementation 'com.obsez.android.lib.filechooser:filechooser:1.1.10'
@@ -36,10 +36,10 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.11.2'
 
     // Open Source Notices
-    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.1'
 
     // Firebase Admob
-    implementation 'com.google.firebase:firebase-ads:15.0.1'
+    implementation 'com.google.firebase:firebase-ads:17.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

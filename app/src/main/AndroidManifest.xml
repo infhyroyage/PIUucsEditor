@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.editor.ucs.piu">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.editor.ucs.piu">
 
-	<uses-sdk
-		xmlns:tools="http://schemas.android.com/tools"
-		tools:overrideLibrary="android.support.v14.preference"/>
+    <uses-sdk xmlns:tools="http://schemas.android.com/tools"
+        tools:overrideLibrary="android.support.v14.preference" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-	<application
-		android:icon="@mipmap/ic_launcher"
-		android:label="@string/common_appName"
-        android:allowBackup="true">
-		<activity
-			android:name=".main.MainActivity"
-			android:screenOrientation="portrait"
-			android:theme="@style/MainTheme">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="android.intent.category.LAUNCHER"/>
-			</intent-filter>
-		</activity>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/common_appName">
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".setting.SettingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SettingTheme"/>
+            android:theme="@style/SettingTheme" />
         <activity
             android:name=".download.DownloadActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DownloadTheme"/>
+            android:theme="@style/DownloadTheme" />
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
-            android:theme="@style/MainTheme"/>
+            android:theme="@style/MainTheme" />
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
-            android:theme="@style/MainTheme"/>
-	</application>
+            android:theme="@style/MainTheme" />
+    </application>
 
 </manifest>

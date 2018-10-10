@@ -22,48 +22,48 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="0"
-			android:text="@string/radioButton_zoom_0.125"/>
+			android:text="@string/radioButton_zoom_0_125"/>
 
 		<RadioButton
 			android:id="@+id/zoom1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="1"
-			android:text="@string/radioButton_zoom_0.25"/>
+			android:text="@string/radioButton_zoom_0_25"/>
 
 		<RadioButton
 			android:id="@+id/zoom2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="2"
-			android:text="@string/radioButton_zoom_0.5"/>
+			android:text="@string/radioButton_zoom_0_5"/>
 
 		<RadioButton
 			android:id="@+id/zoom3"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="3"
-			android:text="@string/radioButton_zoom_1.0"/>
+			android:text="@string/radioButton_zoom_1_0"/>
 
 		<RadioButton
 			android:id="@+id/zoom4"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="4"
-			android:text="@string/radioButton_zoom_2.0"/>
+			android:text="@string/radioButton_zoom_2_0"/>
 
 		<RadioButton
 			android:id="@+id/zoom5"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="5"
-			android:text="@string/radioButton_zoom_4.0"/>
+			android:text="@string/radioButton_zoom_4_0"/>
 
 		<RadioButton
 			android:id="@+id/zoom6"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:tag="6"
-			android:text="@string/radioButton_zoom_8.0"/>
+			android:text="@string/radioButton_zoom_8_0"/>
 	</RadioGroup>
 </LinearLayout>

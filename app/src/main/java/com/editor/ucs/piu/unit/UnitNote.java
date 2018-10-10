@@ -35,22 +35,18 @@ public class UnitNote {
 
     /**
      * 単ノートorホールドの始点のイメージビュー
-     * TODO : イメージビューを詳細設定で切り替える
      */
     public ImageView startView;
     /**
      * ホールドor中抜きホールドの始点と終点との間のイメージビュー
-     * TODO : イメージビューを詳細設定で切り替える
      */
     public ImageView holdView;
     /**
      * 中抜きホールドの中間にかぶせる始点と終点との間のイメージビューのリスト
-     * TODO : イメージビューを詳細設定で切り替える
      */
     public List<ImageView> hollowViewList;
     /**
      * ホールドの終点のイメージビュー
-     * TODO : イメージビューを詳細設定で切り替える
      */
     public ImageView goalView;
 

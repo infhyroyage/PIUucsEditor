@@ -1,15 +1,15 @@
 <resources>
-    <string name="adView_download">ca-app-pub-2231903967147229/3979252935</string>
-    <string name="adView_main">ca-app-pub-2231903967147229/5894969838</string>
-    <string name="adView_setting">ca-app-pub-2231903967147229/6396095920</string>
+    <string name="adView_download" translatable="false">ca-app-pub-2231903967147229/3979252935</string>
+    <string name="adView_main" translatable="false">ca-app-pub-2231903967147229/5894969838</string>
+    <string name="adView_setting" translatable="false">ca-app-pub-2231903967147229/6396095920</string>
     <string name="button_block_add">Block\nAdd</string>
-	<string name="button_block_delete">Block\nDelete</string>
+    <string name="button_block_delete">Block\nDelete</string>
     <string name="button_block_merge">Block\nMerge</string>
-	<string name="button_block_setting">Block\nSetting</string>
-	<string name="button_block_split">Block\nSplit</string>
-    <string name="button_color_minus">-</string>
-    <string name="button_color_plus">+</string>
-	<string name="button_copied_upDown">Vertical Rotation</string>
+    <string name="button_block_setting">Block\nSetting</string>
+    <string name="button_block_split">Block\nSplit</string>
+    <string name="button_color_minus" translatable="false">-</string>
+    <string name="button_color_plus" translatable="false">+</string>
+    <string name="button_copied_upDown">Vertical Rotation</string>
     <string name="button_copied_leftRight">Horizontal Rotation</string>
     <string name="button_download_filter">Filter</string>
     <string name="button_edit_copy">Copy\nSelected Area</string>
@@ -26,14 +26,14 @@
     <string name="button_file_rename">Rename\nucs File</string>
     <string name="button_file_save">Save</string>
     <string name="button_file_saveAs">Save as</string>
-	<string name="button_move_bottom">Move\nBottom Row</string>
+    <string name="button_move_bottom">Move\nBottom Row</string>
     <string name="button_move_lowerBeat">Move\nbelow %1$d Rows</string>
-	<string name="button_move_lowerBlock">Move\nbelow Block</string>
-	<string name="button_move_lowerRow">Move\nbelow Row</string>
-	<string name="button_move_top">Move\nTop Row</string>
-	<string name="button_move_upperBlock">Move\nabove Block</string>
-	<string name="button_move_upperBeat">Move\nabove %1$d Rows</string>
-	<string name="button_move_upperRow">Move\nabove Row</string>
+    <string name="button_move_lowerBlock">Move\nbelow Block</string>
+    <string name="button_move_lowerRow">Move\nbelow Row</string>
+    <string name="button_move_top">Move\nTop Row</string>
+    <string name="button_move_upperBlock">Move\nabove Block</string>
+    <string name="button_move_upperBeat">Move\nabove %1$d Rows</string>
+    <string name="button_move_upperRow">Move\nabove Row</string>
     <string name="button_other_interrupt">Interrupt\nPlaying</string>
     <string name="button_other_playInitially">Play at\nInitial Row</string>
     <string name="button_other_playCurrently">Play at\nPointer</string>
@@ -41,15 +41,15 @@
     <string name="button_other_zoom">Change\nZoom</string>
     <string name="button_scroll_pointer">Scroll to\nPointer</string>
     <string name="checkBox_play_confirmation">Don\'t show again</string>
-    <string name="common_appName">PIU ucs Editor</string>
-    <string name="common_beat">Beat</string>
-    <string name="common_bpm">BPM</string>
-    <string name="common_delay">Delay</string>
-    <string name="common_ms">(ms)</string>
-    <string name="common_range">~</string>
+    <string name="common_appName" translatable="false">PIU ucs Editor</string>
+    <string name="common_beat" translatable="false">Beat</string>
+    <string name="common_bpm" translatable="false">BPM</string>
+    <string name="common_delay" translatable="false">Delay</string>
+    <string name="common_ms" translatable="false">(ms)</string>
+    <string name="common_range" translatable="false">~</string>
     <string name="common_rowLength">Row Length</string>
-    <string name="common_split">Split</string>
-    <string name="common_to">→</string>
+    <string name="common_split" translatable="false">Split</string>
+    <string name="common_to" translatable="false">→</string>
     <string name="dialog_button_destroy">Destroy</string>
     <string name="dialog_message_blockDelete">The block at the pointer is going to be deleted.Do you want to delete it?</string>
     <string name="dialog_message_blockMerge">The block at the pointer and its just below block are going to be merged. Do you want to merge them?\nThe block settings are changed based on the former block except the row length.</string>
@@ -64,43 +64,43 @@
     <string name="dialog_title_selectDirectory">Select Directory</string>
     <string name="dialog_title_selectUcsFile">Select ucs File</string>
     <string name="dialog_title_ucsReadError">ucs File Opening Error</string>
-    <string name="editText_beat_default">4</string>
-    <string name="editText_bpm_default">120.0</string>
-    <string name="editText_delay_default">0.0</string>
-    <string name="editText_ucsName_default">new</string>
-    <string name="editText_rowLength_default">400</string>
-    <string name="editText_split_default">2</string>
-	<string name="radioButton_newUcs_single">Single</string>
-	<string name="radioButton_newUcs_singlePerformance">Single Performance</string>
-	<string name="radioButton_newUcs_double">Double</string>
-	<string name="radioButton_newUcs_doublePerformance">Double Performance</string>
-    <string name="radioButton_zoom_0.125">x0.125</string>
-    <string name="radioButton_zoom_0.25">x0.25</string>
-    <string name="radioButton_zoom_0.5">x0.5</string>
-    <string name="radioButton_zoom_1.0">x1.0</string>
-    <string name="radioButton_zoom_2.0">x2.0</string>
-    <string name="radioButton_zoom_4.0">x4.0</string>
-    <string name="radioButton_zoom_8.0">x8.0</string>
-	<string-array name="spinner_entries">
-		<item>Move</item>
+    <string name="editText_beat_default" translatable="false">4</string>
+    <string name="editText_bpm_default" translatable="false">120.0</string>
+    <string name="editText_delay_default" translatable="false">0.0</string>
+    <string name="editText_ucsName_default" translatable="false">new</string>
+    <string name="editText_rowLength_default" translatable="false">400</string>
+    <string name="editText_split_default" translatable="false">2</string>
+    <string name="radioButton_newUcs_single" translatable="false">Single</string>
+    <string name="radioButton_newUcs_singlePerformance" translatable="false">Single Performance</string>
+    <string name="radioButton_newUcs_double" translatable="false">Double</string>
+    <string name="radioButton_newUcs_doublePerformance" translatable="false">Double Performance</string>
+    <string name="radioButton_zoom_0_125" translatable="false">x0.125</string>
+    <string name="radioButton_zoom_0_25" translatable="false">x0.25</string>
+    <string name="radioButton_zoom_0_5" translatable="false">x0.5</string>
+    <string name="radioButton_zoom_1_0" translatable="false">x1.0</string>
+    <string name="radioButton_zoom_2_0" translatable="false">x2.0</string>
+    <string name="radioButton_zoom_4_0" translatable="false">x4.0</string>
+    <string name="radioButton_zoom_8_0" translatable="false">x8.0</string>
+    <string-array name="spinner_entries">
+        <item>Move</item>
         <item>Edit</item>
         <item>Block</item>
-		<item>File</item>
-		<item>Other</item>
-	</string-array>
-    <string name="textView_actionBar_asterisk">%1$s*</string>
+        <item>File</item>
+        <item>Other</item>
+    </string-array>
+    <string name="textView_actionBar_asterisk" translatable="false">%1$s*</string>
     <string name="textView_blockAdd_message">Please input the block setting you want to add, and press OK button.\nThe block is going to be inserted at the split between the row at the pointer and its just below row.</string>
-    <string name="textView_bpm_float">BPM:%1$.2f</string>
-    <string name="textView_bpm_string">BPM:%1$s</string>
-    <string name="textView_color_alpha">Alpha:%1$d</string>
-    <string name="textView_color_blue">Blue:%1$d</string>
-    <string name="textView_color_green">Green:%1$d</string>
-    <string name="textView_color_red">Red:%1$d</string>
+    <string name="textView_bpm_float" translatable="false">BPM:%1$.2f</string>
+    <string name="textView_bpm_string" translatable="false">BPM:%1$s</string>
+    <string name="textView_color_alpha" translatable="false">Alpha:%1$d</string>
+    <string name="textView_color_blue" translatable="false">Blue:%1$d</string>
+    <string name="textView_color_green" translatable="false">Green:%1$d</string>
+    <string name="textView_color_red" translatable="false">Red:%1$d</string>
     <string name="textView_connectionError">Connection was failed.\nPlease check your connection environment.</string>
     <string name="textView_copiedChart_message">Notes are going to be pasted as follows at the pointer.\nIf you do not mind, please OK button.\nIf you want to execute vertical or horizontal rotation, please press vertical or horizontal button, and press OK button.</string>
-    <string name="textView_delay_float">Delay:%1$.2f(ms)</string>
+    <string name="textView_delay_float" translatable="false">Delay:%1$.2f(ms)</string>
     <string name="textView_filter_artistName">Artist Name</string>
-    <string name="textView_filter_message">Please input conditions filtering sample ucs files, and press OK button.\nIt regards no condition if you don't input.</string>
+    <string name="textView_filter_message">Please input conditions filtering sample ucs files, and press OK button.\nIt regards no condition if you don\'t input.</string>
     <string name="textView_filter_songName">Song Name</string>
     <string name="textView_filter_songVersion">Version</string>
     <string name="textView_filter_versionUnspecified">Unspecified</string>
@@ -120,7 +120,7 @@
     <string name="textView_listView_title_vibration">Vibration</string>
     <string name="textView_newUcs_mode">Mode</string>
     <string name="textView_newUcs_name">ucs File Name(No Extension .ucs Required)</string>
-    <string name="textView_split_short">Split:%1$d</string>
+    <string name="textView_split_short" translatable="false">Split:%1$d</string>
     <string name="textView_play_confirmation">If you set Note Sound ON, there is a possibility that note sound and BGM may not be synchronized.\nIf they are done, please interrupt playing and play again.</string>
     <string name="textView_zoom_message">Please choose zoom of the chart you want to change, and press OK button.\nIt may take some time for the zoom setting to take effect.</string>
     <string name="toast_blockDeleteError">Block Delete was failed because there exists only one block</string>
@@ -143,11 +143,11 @@
     <string name="toast_permissionError_open">Opening your chosen ucs file was failed</string>
     <string name="toast_permissionError_save">Opening your editing ucs file was failed</string>
     <string name="toast_sameFileNameError">There already exists %1$s at your chosen directory.\nPlease check it and download again.</string>
-	<string name="toast_save">Save to\n%1$s</string>
-	<string name="toggleButton_edit_lockOff">Edit Lock\nOFF</string>
-	<string name="toggleButton_edit_lockOn">Edit Lock\nON</string>
-	<string name="toggleButton_edit_selectOff">Select Mode\nOFF</string>
-	<string name="toggleButton_edit_selectOn">Select Mode\nON</string>
+    <string name="toast_save">Save to\n%1$s</string>
+    <string name="toggleButton_edit_lockOff">Edit Lock\nOFF</string>
+    <string name="toggleButton_edit_lockOn">Edit Lock\nON</string>
+    <string name="toggleButton_edit_selectOff">Select Mode\nOFF</string>
+    <string name="toggleButton_edit_selectOn">Select Mode\nON</string>
     <string name="toggleButton_other_noteSoundOff">Note Sound\nOFF</string>
     <string name="toggleButton_other_noteSoundOn">Note Sound\nON</string>
 </resources>
