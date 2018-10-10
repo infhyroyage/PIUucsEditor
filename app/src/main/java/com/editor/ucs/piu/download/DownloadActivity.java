@@ -24,7 +24,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -74,7 +73,8 @@ public class DownloadActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // タップしたサンプル情報のインスタンスを取得
-                UnitSample unitSample = new ArrayList<>(downloadActivity.unitSampleMap.values()).get(i);
+                ListView listView = (ListView) adapterView;
+                UnitSample unitSample = (UnitSample) listView.getItemAtPosition(i);
                 // ログ出力
                 Log.d(TAG, "onPostExecute:downloadUrl=" + unitSample.downloadUrl);
 
