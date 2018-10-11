@@ -81,9 +81,9 @@ public class FilterDialogFragment extends DialogFragment {
     }
 
     /**
-     *  「フィルター」のダイアログのビューでの入力情報をもとに、サンプル情報をフィルタリングする
+     * 「フィルター」のダイアログのビューでの入力情報をもとに、サンプル情報をフィルタリングする
      *
-     * @param downloadFilterView  「フィルター」のダイアログのビュー
+     * @param downloadFilterView 「フィルター」のダイアログのビュー
      */
     private void filter(View downloadFilterView) {
         // サンプルのucsファイルをダウンロードできるサンプル情報のリストビューを取得
@@ -186,7 +186,7 @@ public class FilterDialogFragment extends DialogFragment {
     /**
      * 指定した文字列が部分一致しないかどうかチェックする
      *
-     * @param str 文字列
+     * @param str    文字列
      * @param subStr 走査する部分文字列
      * @return 部分一致しない場合はtrue、部分一致する場合はfalse
      */

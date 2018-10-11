@@ -144,6 +144,8 @@ public class SettingDialogFragment extends DialogFragment {
                             }).setNegativeButton(android.R.string.cancel, null);
 
                     return builder.create();
+                case LIST_FRAME_COLOR:
+                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)}, builder, type);
                 case LIST_POINTER_COLOR:
                     return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)}, builder, type);
                 case LIST_POINTER_SELECTED_COLOR:
@@ -157,21 +159,24 @@ public class SettingDialogFragment extends DialogFragment {
     /**
      * ARGB値を変更するダイアログをビルダーから生成して返す
      * 第1引数beforeには変更前のARGB値(0〜255)の配列であり、次のように構成する必要がある
-     * 	・要素数が3つ : 0番目から順にR、G、B値
-     * 	・要素数が4つ : 0番目から順にA、R、G、B値
+     * ・要素数が3つ : 0番目から順にR、G、B値
+     * ・要素数が4つ : 0番目から順にA、R、G、B値
      *
-     * @param before					上記の条件を満たす(A、)R、G、B値
-     * @param builder					ARGB値を変更するダイアログのビルダー
-     * @param commonDialogType			変更する色を表すタイプ
-     * @return							ARGB値を変更するダイアログ
-     * @throws IllegalArgumentException	第1引数beforeが上記の条件を満たしていない場合
+     * @param before           上記の条件を満たす(A、)R、G、B値
+     * @param builder          ARGB値を変更するダイアログのビルダー
+     * @param commonDialogType 変更する色を表すタイプ
+     * @return ARGB値を変更するダイアログ
+     * @throws IllegalArgumentException 第1引数beforeが上記の条件を満たしていない場合
      */
     private Dialog createColorChangeDialog(int[] before, AlertDialog.Builder builder, final CommonDialogType commonDialogType) throws IllegalArgumentException {
         // 引数のエラーチェック
-        if (before.length < 3) throw new IllegalArgumentException("The number of arguments is too less.");
-        if (before.length > 4) throw new IllegalArgumentException("The number of arguments is too many.");
+        if (before.length < 3)
+            throw new IllegalArgumentException("The number of arguments is too less.");
+        if (before.length > 4)
+            throw new IllegalArgumentException("The number of arguments is too many.");
         for (int b : before) {
-            if (b < 0 || b > 255) throw new IllegalArgumentException("ARGB parameters are out of range.");
+            if (b < 0 || b > 255)
+                throw new IllegalArgumentException("ARGB parameters are out of range.");
         }
 
         LayoutInflater inflater = (LayoutInflater) settingActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -184,7 +189,8 @@ public class SettingDialogFragment extends DialogFragment {
 
         // Alpha値を変動させるかどうかのフラグを生成し、変動させない場合はAlpha値を変更させる列を非表示にする
         final boolean isAlpha = before.length == 4;
-        if (!isAlpha) colorChangeView.findViewById(R.id.colorChangeAlphaTableRow).setVisibility(View.GONE);
+        if (!isAlpha)
+            colorChangeView.findViewById(R.id.colorChangeAlphaTableRow).setVisibility(View.GONE);
 
         // 変更前後の色を表示するフレームを取得
         final FrameLayout from = colorChangeView.findViewById(R.id.colorChangeFrom);
@@ -216,10 +222,14 @@ public class SettingDialogFragment extends DialogFragment {
                     alphaTextView.setText(getString(R.string.textView_color_alpha, i));
                     to.getBackground().setAlpha(i);
                 }
+
                 @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {}
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
                 @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {}
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
             });
         }
         final SeekBar redSeekBar = colorChangeView.findViewById(R.id.colorChangeRedSeekBar);
@@ -234,10 +244,14 @@ public class SettingDialogFragment extends DialogFragment {
                 to.setBackgroundColor(Color.rgb(i, greenSeekBar.getProgress(), blueSeekBar.getProgress()));
                 if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         greenSeekBar.setProgress(before[before.length - 2]);
         greenSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -250,9 +264,12 @@ public class SettingDialogFragment extends DialogFragment {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         blueSeekBar.setProgress(before[before.length - 1]);
         blueSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -265,9 +282,12 @@ public class SettingDialogFragment extends DialogFragment {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         // ARGB値を変更する8つのボタンを取得し、リスナーをセット
@@ -419,6 +439,18 @@ public class SettingDialogFragment extends DialogFragment {
                                 MainCommonFunctions.updateTextsAtPointer();
 
                                 break;
+                            case LIST_FRAME_COLOR:
+                                // 変更後のRGB値を保存
+                                sharedPreferences.edit()
+                                        .putInt(CommonParameters.PREFERENCE_FRAME_RED, redSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_FRAME_GREEN, greenSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_FRAME_BLUE, blueSeekBar.getProgress())
+                                        .apply();
+
+                                // ポインターの位置が示すブロックの情報を更新
+                                MainCommonFunctions.updateTextsAtPointer();
+
+                                break;
                             case LIST_POINTER_COLOR:
                                 FrameLayout pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
                                 if (alphaSeekBar != null) {
@@ -480,6 +512,8 @@ public class SettingDialogFragment extends DialogFragment {
                                     }
                                 }
                                 break;
+                            default:
+                                throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
                         }
 
                         // 変更後のテキストの色を詳細設定のリストビューのアダプターに反映

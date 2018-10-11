@@ -38,8 +38,8 @@ public class NoteLayout extends FrameLayout {
     /**
      * ホールドの1点目の行番号を保持する配列
      * 添え字は列を表し、Single譜面でもDouble譜面でも10個の要素数を持つ
-     * 	・要素が0           : ホールドの1点目をまだ設置していない
-     * 	・要素が0より大きい : ホールドの1点目を既に設置しており、その行番号
+     * ・要素が0           : ホールドの1点目をまだ設置していない
+     * ・要素が0より大きい : ホールドの1点目を既に設置しており、その行番号
      */
     public int[] holdEdge = new int[10];
 
@@ -73,7 +73,7 @@ public class NoteLayout extends FrameLayout {
      * 指定されたノートのビューをノートのレイアウトに追加する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param unitNote 追加するノートのインスタンス
+     * @param unitNote     追加するノートのインスタンス
      */
     public void addNoteView(MainActivity mainActivity, UnitNote unitNote) {
         // ログ出力
@@ -133,10 +133,10 @@ public class NoteLayout extends FrameLayout {
     /**
      * ホールドor中抜きホールドの始点と終点との間にかぶせるビューの長さを計算する(px単位)
      *
-     * @param mainActivity メイン画面のアクティビティ
-     * @param start ホールドor中抜きホールドの始点と終点との間にかぶせるビューの始点
+     * @param mainActivity     メイン画面のアクティビティ
+     * @param start            ホールドor中抜きホールドの始点と終点との間にかぶせるビューの始点
      * @param startInformation ホールドor中抜きホールドの始点と終点との間にかぶせるビューの始点の位置情報
-     * @param goal ホールドor中抜きホールドの始点と終点との間にかぶせるビューの終点
+     * @param goal             ホールドor中抜きホールドの始点と終点との間にかぶせるビューの終点
      * @return ホールドor中抜きホールドの始点と終点との間にかぶせるビューの長さ
      */
     private float calcHoldAndHollowHeight(MainActivity mainActivity, int start, ChartLayout.PositionInformation startInformation, int goal) {
@@ -209,8 +209,8 @@ public class NoteLayout extends FrameLayout {
     /**
      * ポインターが示す行番号の指定された列番号において、ノートorホールドの編集を行う
      *
-     * @param mainActivity メイン画面のアクティビティ
-     * @param column ノートorホールドを追加or削除する列番号
+     * @param mainActivity  メイン画面のアクティビティ
+     * @param column        ノートorホールドを追加or削除する列番号
      * @param isLongClicked 長押ししたかどうかのフラグ
      */
     public void handleNote(MainActivity mainActivity, byte column, boolean isLongClicked) {
@@ -437,8 +437,8 @@ public class NoteLayout extends FrameLayout {
      * そのノートのビューを下敷きにさせるように設置し直す
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param row ノートの行番号orホールドの終点の行番号
-     * @param column ノートの行番号orホールドの終点の列番号
+     * @param row          ノートの行番号orホールドの終点の行番号
+     * @param column       ノートの行番号orホールドの終点の列番号
      */
     public void layAddedNotes(MainActivity mainActivity, int row, byte column) {
         // 譜面のレイアウトを取得

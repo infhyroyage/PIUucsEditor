@@ -47,7 +47,7 @@ public class UnitProcess {
     /**
      * コンストラクタ
      *
-     * @param addedNotes ノートのレイアウトに追加したノートのビューの集合
+     * @param addedNotes   ノートのレイアウトに追加したノートのビューの集合
      * @param removedNotes ノートのレイアウトから削除したノートのビューの集合
      */
     public UnitProcess(Set<UnitNote> addedNotes, Set<UnitNote> removedNotes) {
@@ -62,7 +62,7 @@ public class UnitProcess {
     /**
      * コンストラクタ
      *
-     * @param addedBlockMap ノートのレイアウトに追加した譜面のブロックのマップ
+     * @param addedBlockMap   ノートのレイアウトに追加した譜面のブロックのマップ
      * @param removedBlockMap ノートのレイアウトから削除した譜面のブロックのマップ
      */
     public UnitProcess(NavigableMap<Integer, UnitBlock> addedBlockMap, NavigableMap<Integer, UnitBlock> removedBlockMap) {
@@ -77,8 +77,8 @@ public class UnitProcess {
     /**
      * コンストラクタ
      *
-     * @param addedNotes ノートのレイアウトに追加したノートのビューの集合
-     * @param removedNotes ノートのレイアウトから削除したノートのビューの集合
+     * @param addedNotes    ノートのレイアウトに追加したノートのビューの集合
+     * @param removedNotes  ノートのレイアウトから削除したノートのビューの集合
      * @param addedBlockMap ノートのレイアウトに追加した譜面のブロックのマップ
      * @param removedBlocks ノートのレイアウトから削除した譜面のブロックのマップ
      */

@@ -45,7 +45,7 @@ public class DownloadAsyncTask extends AsyncTask<Void, Integer, String> {
     /**
      * コンストラクタ
      *
-     * @param downloadActivity サンプルのucsファイルをダウンロードするアクティビティ
+     * @param downloadActivity  サンプルのucsファイルをダウンロードするアクティビティ
      * @param downloadDirectory ダウンロードしたファイルを格納するディレクトリ
      */
     DownloadAsyncTask(DownloadActivity downloadActivity, String downloadDirectory) {
@@ -89,7 +89,7 @@ public class DownloadAsyncTask extends AsyncTask<Void, Integer, String> {
      */
     @Override
     protected String doInBackground(Void... voids) {
-        String message  = null;
+        String message = null;
 
         // サンプルのucsファイルをダウンロードするアクティビティを取得
         DownloadActivity downloadActivity = weakReference.get();

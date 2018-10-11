@@ -113,6 +113,7 @@
     <string name="textView_listView_title_blockOddColor">Odd Block Color</string>
     <string name="textView_listView_title_blockTextColor">Block Information Text Color</string>
     <string name="textView_listView_title_buttonsPosition">Buttons Display Position</string>
+    <string name="textView_listView_title_frameColor">Frame Color</string>
     <string name="textView_listView_title_license">License</string>
     <string name="textView_listView_title_pointerColor">Pointer Color</string>
     <string name="textView_listView_title_pointerSelectedColor">Pointer Color(Select Mode)</string>

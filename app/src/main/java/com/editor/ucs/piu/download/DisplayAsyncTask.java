@@ -216,8 +216,8 @@ class DisplayAsyncTask extends AsyncTask<Void, Void, String> {
          * コンストラクタ
          *
          * @param downloadActivity サンプルのucsファイルをダウンロードするアクティビティ
-         * @param version バージョン名
-         * @param additionalUrl URLへの追加文字列
+         * @param version          バージョン名
+         * @param additionalUrl    URLへの追加文字列
          */
         SampleSubListThread(DownloadActivity downloadActivity, String version, String additionalUrl) {
             this.downloadActivity = downloadActivity;

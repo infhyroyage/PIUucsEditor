@@ -47,9 +47,9 @@ import static android.view.View.VISIBLE;
  * メイン画面のアクティビティの共通動作を行う抽象クラス
  */
 public abstract class MainCommonFunctions {
-	// デバッグ用のタグ
-	private static final String TAG = "MainCommonFunctions";
-	
+    // デバッグ用のタグ
+    private static final String TAG = "MainCommonFunctions";
+
     /**
      * メイン画面のアクティビティ
      */
@@ -59,7 +59,7 @@ public abstract class MainCommonFunctions {
      * 「ブロック追加」のダイアログでの入力情報をもとに、ポインターが示している行の直後に譜面のブロックを新規追加する
      *
      * @param blockAddView 「ブロック追加」のダイアログのビュー
-     * @param information ポインターで示している行番号の位置情報
+     * @param information  ポインターで示している行番号の位置情報
      */
     static void addBlockAtPointer(View blockAddView, ChartLayout.PositionInformation information) {
         // ボタン群のレイアウトを取得
@@ -546,7 +546,7 @@ public abstract class MainCommonFunctions {
      * 再生確認ダイアログを今後表示しないかどうか確認して、再生動作を実行する
      *
      * @param playConfirmationView 再生確認ダイアログのビュー
-     * @param startRow 再生したい位置を示す行番号
+     * @param startRow             再生したい位置を示す行番号
      */
     static void executePlaying(View playConfirmationView, int startRow) {
         // 譜面のスクロールビューを取得
@@ -691,7 +691,7 @@ public abstract class MainCommonFunctions {
     /**
      * メイン画面のアクティビティのパーミッションを依頼する
      *
-     * @param permission チェックするパーミッション種別
+     * @param permission  チェックするパーミッション種別
      * @param requestCode パーミッションの許可を求めるダイアログを識別するためのコード
      * @return パーミッションの許可を求めるダイアログを表示しなかった場合はtrue、表示した場合はfalse
      */
@@ -808,7 +808,7 @@ public abstract class MainCommonFunctions {
      * 「ブロック設定」のダイアログでの入力情報をもとに、ポインターが示している譜面のブロックの情報を更新する
      *
      * @param blockSettingView 「ブロック設定」のダイアログのビュー
-     * @param information ポインターで示している行番号の位置情報
+     * @param information      ポインターで示している行番号の位置情報
      */
     static void updateBlockSettingAtPointer(View blockSettingView, ChartLayout.PositionInformation information) {
         // ボタン群のレイアウトを取得
@@ -918,7 +918,7 @@ public abstract class MainCommonFunctions {
             chartLayout.updateLastView(mainActivity);
 
             // ポインターで示している譜面のブロック以下にある譜面のブロックに属するノートのビューを更新
-            for (UnitNote unitNote: noteLayout.noteMap.tailMap(10 * (information.offsetRowLength + 1)).values()) {
+            for (UnitNote unitNote : noteLayout.noteMap.tailMap(10 * (information.offsetRowLength + 1)).values()) {
                 noteLayout.removeNoteView(unitNote);
                 noteLayout.addNoteView(mainActivity, unitNote);
             }
@@ -1087,14 +1087,14 @@ public abstract class MainCommonFunctions {
         TextView bpmTextView = mainActivity.findViewById(R.id.bpmTextView);
         TextView delayTextView = mainActivity.findViewById(R.id.delayTextView);
         TextView splitTextView = mainActivity.findViewById(R.id.splitTextView);
-        
+
         // 3つのテキストビューの色をRGB値として取得
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
         int textColor = Color.rgb(
-        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, 0),
-        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, 255),
-        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, 0));
-        
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, 0),
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, 255),
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, 0));
+
         // 3つのテキストビューの色とテキストをセット
         bpmTextView.setTextColor(textColor);
         bpmTextView.setText(mainActivity.getString(R.string.textView_bpm_float, pointerLayout.bpm));
@@ -1137,5 +1137,6 @@ public abstract class MainCommonFunctions {
     }
 
     // 抽象staticクラスなのでコンストラクタはprivateにする
-    private MainCommonFunctions() {}
+    private MainCommonFunctions() {
+    }
 }

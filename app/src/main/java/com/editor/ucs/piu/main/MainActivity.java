@@ -28,8 +28,8 @@ import java.io.File;
  * メイン画面のアクティビティを表すクラス
  */
 public class MainActivity extends AppCompatActivity {
-	// デバッグ用のタグ
-	private static final String TAG = "MainActivity";
+    // デバッグ用のタグ
+    private static final String TAG = "MainActivity";
 
     /**
      * ucsファイルのインスタンス
@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
     public Ucs ucs = null;
 
     @Override
-	protected void onCreate(Bundle savedInstanceState) {
-	    // ログ出力
+    protected void onCreate(Bundle savedInstanceState) {
+        // ログ出力
         Log.d(TAG, "onCreate");
 
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         // メイン画面のアクティビティにおける共通関数に自身のインスタンスをセット
         MainCommonFunctions.mainActivity = this;
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // AdMobの初期化
         MobileAds.initialize(this, CommonParameters.ADMOB_APP_ID);
         ((AdView) findViewById(R.id.mainAdView)).loadAd(new AdRequest.Builder().build());
-	}
+    }
 
     @Override
     protected void onStop() {
@@ -83,27 +83,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-	public void onBackPressed(){
-		// 譜面編集が行われている状態で「戻る」ボタンを押した時、譜面データを破棄するかどうかのダイアログを表示
-		if (((ChartLayout) findViewById(R.id.chartLayout)).editCount != 0) {
-			MainDialogFragment.newInstance(this, CommonDialogType.ON_BACK_PRESSED, R.string.dialog_title_destroy, R.string.dialog_message_destroy).show(getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_MAIN_ACTIVITY);
-		} else {
-			super.onBackPressed();
-		}
-	}
+    public void onBackPressed() {
+        // 譜面編集が行われている状態で「戻る」ボタンを押した時、譜面データを破棄するかどうかのダイアログを表示
+        if (((ChartLayout) findViewById(R.id.chartLayout)).editCount != 0) {
+            MainDialogFragment.newInstance(this, CommonDialogType.ON_BACK_PRESSED, R.string.dialog_title_destroy, R.string.dialog_message_destroy).show(getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_MAIN_ACTIVITY);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // ログ出力
         Log.d(TAG, "onRequestPermissionsResult:requestCode=" + requestCode);
 
         final MainActivity mainActivity = this;
 
         switch (requestCode) {
-			// 内部ストレージからucsファイルを読み込むパーミッションの許可を求めるダイアログの場合
-			case CommonParameters.PERMISSION_UCS_READ:
-			    if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-			        // 上記ダイアログで「許可」を選択した場合、外部ストレージ上にあるucsファイルを指定させて、その絶対パスを取得するダイアログの表示
+            // 内部ストレージからucsファイルを読み込むパーミッションの許可を求めるダイアログの場合
+            case CommonParameters.PERMISSION_UCS_READ:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 上記ダイアログで「許可」を選択した場合、外部ストレージ上にあるucsファイルを指定させて、その絶対パスを取得するダイアログの表示
                     new ChooserDialog().with(this)
                             .withFilter(false, false, "ucs")
                             .withStartFile(Environment.getExternalStorageDirectory().getPath())
@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
                     Toast.makeText(this, R.string.toast_permissionError_open, Toast.LENGTH_SHORT).show();
                 }
-				break;
-			// 内部ストレージへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
+                break;
+            // 内部ストレージへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
             case CommonParameters.PERMISSION_UCS_SAVE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 上記ダイアログで「許可」を選択した場合、ucsファイルを書き込む
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
                     Toast.makeText(this, R.string.toast_permissionError_save, Toast.LENGTH_SHORT).show();
                 }
-				break;
-		}
-	}
+                break;
+        }
+    }
 }

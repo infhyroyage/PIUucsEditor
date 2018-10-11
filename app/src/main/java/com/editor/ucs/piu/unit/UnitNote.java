@@ -54,8 +54,8 @@ public class UnitNote {
      * 単ノートorホールドの1点目のコンストラクタ
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param column 単ノートorホールドの列番号
-     * @param row 単ノートorホールドの行番号
+     * @param column       単ノートorホールドの列番号
+     * @param row          単ノートorホールドの行番号
      */
     public UnitNote(MainActivity mainActivity, byte column, int row) {
         this.column = column;
@@ -73,9 +73,9 @@ public class UnitNote {
      * 単ノートorホールドのコンストラクタ
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param column 単ノートorホールドの列番号
-     * @param start 単ノートorホールドの始点の行番号
-     * @param goal 単ノートorホールドの終点の行番号
+     * @param column       単ノートorホールドの列番号
+     * @param start        単ノートorホールドの始点の行番号
+     * @param goal         単ノートorホールドの終点の行番号
      */
     public UnitNote(MainActivity mainActivity, byte column, int start, int goal) {
         this.column = column;
@@ -100,12 +100,12 @@ public class UnitNote {
     /**
      * 単ノートorホールドor中抜きホールドのコンストラクタ
      *
-     * @param mainActivity メイン画面のアクティビティ
-     * @param column 単ノートorホールドor中抜きホールドの列番号
-     * @param start 単ノートorホールドor中抜きホールドの始点の行番号
-     * @param goal 単ノートorホールドor中抜きホールドの終点の行番号
+     * @param mainActivity    メイン画面のアクティビティ
+     * @param column          単ノートorホールドor中抜きホールドの列番号
+     * @param start           単ノートorホールドor中抜きホールドの始点の行番号
+     * @param goal            単ノートorホールドor中抜きホールドの終点の行番号
      * @param hollowStartList 中抜きホールドの中間にかぶせる始点の行番号のリスト
-     * @param hollowGoalList 中抜きホールドの中間にかぶせる終点の行番号のリスト
+     * @param hollowGoalList  中抜きホールドの中間にかぶせる終点の行番号のリスト
      */
     public UnitNote(MainActivity mainActivity, byte column, int start, int goal, List<Integer> hollowStartList, List<Integer> hollowGoalList) {
         this.column = column;

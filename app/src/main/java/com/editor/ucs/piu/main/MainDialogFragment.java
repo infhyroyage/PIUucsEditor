@@ -42,10 +42,10 @@ public class MainDialogFragment extends DialogFragment {
      * メイン画面のアクティビティ上で表示するダイアログのインスタンスを生成する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param type ダイアログのタイプ
-     * @param title ダイアログのタイトル
-     * @param message ダイアログのメッセージの文字列
-     * @param args メッセージの文字列で指定する引数
+     * @param type         ダイアログのタイプ
+     * @param title        ダイアログのタイトル
+     * @param message      ダイアログのメッセージの文字列
+     * @param args         メッセージの文字列で指定する引数
      * @return メイン画面のアクティビティ上で表示するダイアログのインスタンス
      */
     public static MainDialogFragment newInstance(MainActivity mainActivity, CommonDialogType type, int title, int message, Object... args) {

@@ -11,10 +11,8 @@ import android.widget.ToggleButton;
 
 import com.editor.ucs.piu.CommonParameters;
 import com.editor.ucs.piu.R;
-import com.editor.ucs.piu.chart.ChartLayout;
 import com.editor.ucs.piu.chart.ChartScrollView;
 import com.editor.ucs.piu.chart.NoteLayout;
-import com.editor.ucs.piu.chart.PointerLayout;
 import com.editor.ucs.piu.chart.SelectedAreaLayout;
 import com.editor.ucs.piu.main.MainActivity;
 
@@ -80,10 +78,10 @@ public class UnitBlock {
     /**
      * コンストラクタ
      *
-     * @param bpm 譜面のブロックで定義されているBPM値
-     * @param delay 譜面のブロックで定義されているDelay値
-     * @param beat 譜面のブロックで定義されているBeat値
-     * @param split 譜面のブロックで定義されているSplit値
+     * @param bpm       譜面のブロックで定義されているBPM値
+     * @param delay     譜面のブロックで定義されているDelay値
+     * @param beat      譜面のブロックで定義されているBeat値
+     * @param split     譜面のブロックで定義されているSplit値
      * @param rowLength 譜面のブロックで定義されている行数
      */
     public UnitBlock(float bpm, float delay, byte beat, byte split, int rowLength) {
@@ -102,7 +100,7 @@ public class UnitBlock {
      * この譜面のブロックでの、指定された列番号における1列のレイアウトリストを取得する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param column この譜面のブロックでの列番号
+     * @param column       この譜面のブロックでの列番号
      * @return この譜面のブロックでの1列のレイアウトリスト
      */
     public List<FrameLayout> getColumnLayoutList(final MainActivity mainActivity, final byte column) {
@@ -116,12 +114,8 @@ public class UnitBlock {
 
         // 譜面のスクロールビューを取得
         final ChartScrollView chartScrollView = mainActivity.findViewById(R.id.chartScrollView);
-        // 譜面のレイアウトを取得
-        final ChartLayout chartLayout = mainActivity.findViewById(R.id.chartLayout);
         // ノートのレイアウトを取得
         final NoteLayout noteLayout = mainActivity.findViewById(R.id.noteLayout);
-        // ポインターのレイアウトを取得
-        final PointerLayout pointerLayout = mainActivity.findViewById(R.id.pointerLayout);
         // 選択領域のレイアウトを取得
         final SelectedAreaLayout selectedAreaLayout = mainActivity.findViewById(R.id.selectedAreaLayout);
 

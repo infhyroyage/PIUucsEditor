@@ -62,6 +62,19 @@ public abstract class CommonParameters {
     public static final String PREFERENCE_BLOCK_ODD_BLUE = "block_odd_blue";
 
     /**
+     * 枠線の色(R値)のプリファレンス情報を取得するためのタグ
+     */
+    public static final String PREFERENCE_FRAME_RED = "frame_red";
+    /**
+     * 枠線の色(G値)のプリファレンス情報を取得するためのタグ
+     */
+    public static final String PREFERENCE_FRAME_GREEN = "frame_green";
+    /**
+     * 枠線の色(B値)のプリファレンス情報を取得するためのタグ
+     */
+    public static final String PREFERENCE_FRAME_BLUE = "frame_blue";
+
+    /**
      * ポインターが示すブロックの情報のテキストビューの色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_TEXT_RED = "block_text_red";
@@ -133,10 +146,10 @@ public abstract class CommonParameters {
     public static final String PREFERENCE_ZOOM_INDEX = "zoom_index";
 
     /**
-	 * 内部ストレージからucsファイルを読み込むパーミッションが許可されてない場合、
+     * 内部ストレージからucsファイルを読み込むパーミッションが許可されてない場合、
      * その許可を求めるダイアログを識別するための8bit長のコード
-	 */
-	public static final int PERMISSION_UCS_READ = 1;
+     */
+    public static final int PERMISSION_UCS_READ = 1;
     /**
      * 内部ストレージへucsファイルを書き込むパーミッションが許可されてない場合、
      * その許可を求めるダイアログを識別するための8bit長のコード
@@ -168,5 +181,6 @@ public abstract class CommonParameters {
     public static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
 
     // 抽象staticクラスなのでコンストラクタはprivateにする
-	private CommonParameters() {}
+    private CommonParameters() {
+    }
 }

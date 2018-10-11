@@ -62,6 +62,7 @@ class SettingAdapter extends ArrayAdapter<CommonDialogType> {
             case LIST_BLOCK_EVEN_COLOR:
             case LIST_BLOCK_ODD_COLOR:
             case LIST_BLOCK_TEXT_COLOR:
+            case LIST_FRAME_COLOR:
             case LIST_POINTER_COLOR:
             case LIST_POINTER_SELECTED_COLOR:
                 view = layoutInflater.inflate(R.layout.item_list_setting_color, parent, false);
@@ -103,6 +104,14 @@ class SettingAdapter extends ArrayAdapter<CommonDialogType> {
             case LIST_BUTTONS_POSITION:
                 ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_buttonsPosition);
                 ((TextView) view.findViewById(R.id.settingSubTitle)).setText(getContext().getResources().getString((sharedPreferences.getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, true)) ? R.string.textView_listView_subTitle_right : R.string.textView_listView_subTitle_left));
+                break;
+            case LIST_FRAME_COLOR:
+                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_frameColor);
+                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80),
+                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80),
+                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)));
                 break;
             case LIST_LICENSE:
                 ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_license);

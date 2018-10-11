@@ -45,10 +45,10 @@ public class UnitSample {
     /**
      * コンストラクタ
      *
-     * @param index サンプル情報のインデックス名
-     * @param songName サンプルの曲名
-     * @param songArtist サンプルの曲のアーティスト名
-     * @param songBpm サンプルの曲のBPM値の文字列
+     * @param index       サンプル情報のインデックス名
+     * @param songName    サンプルの曲名
+     * @param songArtist  サンプルの曲のアーティスト名
+     * @param songBpm     サンプルの曲のBPM値の文字列
      * @param songVersion サンプルの曲のバージョン名
      * @param downloadUrl サンプルをダウンロードできるURLの文字列
      */

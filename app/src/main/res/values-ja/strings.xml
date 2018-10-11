@@ -75,6 +75,7 @@
     <string name="textView_listView_title_blockOddColor">奇数ブロックの色</string>
     <string name="textView_listView_title_blockTextColor">ブロック情報のテキストの色</string>
     <string name="textView_listView_title_buttonsPosition">ボタン群の表示位置</string>
+    <string name="textView_listView_title_frameColor">枠線の色</string>
     <string name="textView_listView_title_license">ライセンス</string>
     <string name="textView_listView_title_pointerColor">ポインターの色</string>
     <string name="textView_listView_title_pointerSelectedColor">ポインターの色(選択モード)</string>

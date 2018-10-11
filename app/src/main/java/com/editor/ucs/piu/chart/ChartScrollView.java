@@ -70,7 +70,7 @@ public class ChartScrollView extends FastScrollScrollView {
      * 指定された位置を示す行番号から最後の行番号まで再生する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param startRow 再生したい位置を示す行番号
+     * @param startRow     再生したい位置を示す行番号
      */
     public void play(final MainActivity mainActivity, int startRow) {
         // ログ出力
@@ -114,7 +114,7 @@ public class ChartScrollView extends FastScrollScrollView {
         float waitBGMPeriod = 0f;
         float seekPeriod = Math.max(0f, information.seekPeriod + chartLayout.blockList.get(0).delay);
         if (chartLayout.blockList.get(0).delay < 0) {
-            waitBGMPeriod = Math.max(0f, - information.seekPeriod - chartLayout.blockList.get(0).delay);
+            waitBGMPeriod = Math.max(0f, -information.seekPeriod - chartLayout.blockList.get(0).delay);
         }
 
         // ログ出力
@@ -253,10 +253,10 @@ public class ChartScrollView extends FastScrollScrollView {
      * 譜面のスクロールビューの再生動作を行うタイマーをセットする
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param initialY 開始地点のY座標(px単位)
-     * @param distances 0、譜面のブロックごとの開始地点のY座標からの相対距離、開始地点のY座標から終了地点までの相対距離(px単位、昇順)
-     * @param milestones 0、開始地点からの譜面のブロックごとの時刻、終了地点の時刻(ms単位、昇順)
-     * @param timings ノート音を鳴らす再生開始からの時刻(ms単位)
+     * @param initialY     開始地点のY座標(px単位)
+     * @param distances    0、譜面のブロックごとの開始地点のY座標からの相対距離、開始地点のY座標から終了地点までの相対距離(px単位、昇順)
+     * @param milestones   0、開始地点からの譜面のブロックごとの時刻、終了地点の時刻(ms単位、昇順)
+     * @param timings      ノート音を鳴らす再生開始からの時刻(ms単位)
      * @throws IllegalArgumentException distancesとmilestonesの要素数が不正な場合
      */
     public void setPlayTimer(final MainActivity mainActivity, final float initialY, final List<Float> distances, final List<Float> milestones, final List<Float> timings) {
@@ -302,6 +302,7 @@ public class ChartScrollView extends FastScrollScrollView {
                 }
                 scrollTo(0, (int) (initialY + distances.get(distanceIdx[0] - 1) + (distances.get(distanceIdx[0]) - distances.get(distanceIdx[0] - 1)) * (playPeriod - millisUntilFinished - milestones.get(distanceIdx[0] - 1)) / (milestones.get(distanceIdx[0]) - milestones.get(distanceIdx[0] - 1))));
             }
+
             @Override
             public void onFinish() {
                 // 「譜面の再生を中断」ボタンを非表示にする

@@ -60,8 +60,8 @@ public class Ucs {
      * コンストラクタ
      * インスタンスはread()、createEmptyUcs()実行時に作成して返すためprivateにする
      *
-     * @param fileDir ucs/mp3ファイルが存在するディレクトリ
-     * @param fileName ucsファイル名(拡張子.ucsを除く)
+     * @param fileDir       ucs/mp3ファイルが存在するディレクトリ
+     * @param fileName      ucsファイル名(拡張子.ucsを除く)
      * @param isPerformance ucsファイルがPerformance譜面かどうかのフラグ
      */
     private Ucs(String fileDir, String fileName, boolean isPerformance) {
@@ -73,13 +73,13 @@ public class Ucs {
     /**
      * ucsファイルのインスタンスを新規作成する
      *
-     * @param mainActivity メイン画面のアクティビティ
-     * @param fileName ucsファイル名(拡張子.ucsを除く)
+     * @param mainActivity  メイン画面のアクティビティ
+     * @param fileName      ucsファイル名(拡張子.ucsを除く)
      * @param isPerformance ucsファイルがPerformance譜面かどうかのフラグ
      */
     static void createEmptyUcs(MainActivity mainActivity, String fileName, boolean isPerformance) {
         // ucsファイルのインスタンスをセット
-        mainActivity.ucs =  new Ucs(null, fileName, isPerformance);
+        mainActivity.ucs = new Ucs(null, fileName, isPerformance);
     }
 
     /**
@@ -110,7 +110,7 @@ public class Ucs {
      * 指定したucsファイルの絶対パスから、その情報を読み込み、そのインスタンスを生成する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param path 指定したucsファイルの絶対パス
+     * @param path         指定したucsファイルの絶対パス
      */
     static void read(MainActivity mainActivity, String path) {
         // ボタン群のレイアウトを取得
@@ -400,7 +400,7 @@ public class Ucs {
     /**
      * ファイル読み込み用のバッファが示すノートを解析する
      *
-     * @param br ファイル読み込み用のバッファ
+     * @param br     ファイル読み込み用のバッファ
      * @param rowNum ファイル読み込み用のバッファが示す行番号
      * @param rowStr ファイル読み込み用のバッファが示す行番号での文字列
      * @return 譜面のブロックのインスタンス(rowLengthにはヘッダーの終端の行番号が格納)
@@ -474,7 +474,7 @@ public class Ucs {
             throw new IllegalUcsFormatException(rowNum);
         }
         try {
-            split= Short.parseShort(rowStr.substring(7));
+            split = Short.parseShort(rowStr.substring(7));
         } catch (NumberFormatException e) {
             // Split値が浮動小数点型ではない
             throw new IllegalUcsFormatException(rowNum);
@@ -489,7 +489,7 @@ public class Ucs {
      * 譜面のレイアウトに存在するブロック・ノートの全情報から、ucsファイルを書き込む
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param fileDir ucs/mp3ファイルが存在するディレクトリ
+     * @param fileDir      ucs/mp3ファイルが存在するディレクトリ
      */
     public void write(MainActivity mainActivity, String fileDir) {
         // ログ出力

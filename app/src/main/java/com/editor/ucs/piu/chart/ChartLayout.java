@@ -152,10 +152,13 @@ public class ChartLayout extends FrameLayout {
             Log.d(TAG, "reset:frameLength=" + frameLength);
             Log.d(TAG, "reset:noteLength=" + noteLength);
 
-            /*
-             * ポインターのレイアウトの色を変更し、表示する
-             * 詳細設定画面の「ポインターの色(通常)」で設定しているポインターの色を取得
-             */
+            // 枠線の色を変更する
+            chartScrollView.setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)));
+
+            // ポインターのレイアウトの色を変更し、表示する
             pointerLayout.setBackgroundColor(Color.rgb(
                     sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0),
                     sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255),
@@ -163,11 +166,7 @@ public class ChartLayout extends FrameLayout {
             pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64));
             pointerLayout.setVisibility(VISIBLE);
 
-            /*
-             * 選択領域のレイアウトの色を変更する
-             * 詳細設定画面の「ポインターの色(譜面選択)」で設定しているポインターの色を取得
-             * Alpha値はポインターの色(譜面選択)のAlpha値の1/2にする
-             */
+            // 選択領域のレイアウトの色を変更する
             selectedAreaLayout.setBackgroundColor(Color.rgb(
                     sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255),
                     sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0),
@@ -211,7 +210,7 @@ public class ChartLayout extends FrameLayout {
      * 指定された譜面のブロックのビューを譜面のレイアウトに追加する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param idxBlock 譜面のブロックの添字
+     * @param idxBlock     譜面のブロックの添字
      */
     public void addBlockView(MainActivity mainActivity, int idxBlock) {
         // ログ出力
@@ -274,7 +273,7 @@ public class ChartLayout extends FrameLayout {
      * 指定された譜面のブロックのビューを譜面のレイアウトから削除する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param idxBlock 譜面のブロックの添字
+     * @param idxBlock     譜面のブロックの添字
      */
     public void removeBlockView(MainActivity mainActivity, int idxBlock) {
         // ログ出力
@@ -401,10 +400,10 @@ public class ChartLayout extends FrameLayout {
         /**
          * コンストラクタ
          *
-         * @param coordinate Y座標
-         * @param idxBlock ブロックのインデックス
+         * @param coordinate      Y座標
+         * @param idxBlock        ブロックのインデックス
          * @param offsetRowLength ブロック内行数のオフセット
-         * @param seekPeriod シーク時間
+         * @param seekPeriod      シーク時間
          */
         PositionInformation(float coordinate, int idxBlock, int offsetRowLength, float seekPeriod) {
             this.coordinate = coordinate;

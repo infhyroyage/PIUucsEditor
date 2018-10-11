@@ -39,22 +39,22 @@ public final class SelectedAreaLayout extends FrameLayout {
      * 1度もコピーされていない場合は0を格納する
      */
     public int copiedLength = 0;
-    
+
     /**
      * 選択領域の始点、終点の行番号を表す、以下に定義するような2つの要素を持つ配列
-     * 	・2つとも要素が0						: 選択領域が存在しないとき
-     * 	・0番目の要素が1以上、1番目の要素が0	: 選択選択モードでもう1点を選ばせるとき
-     * 	・2つとも要素が1以上					: 異なる2点をつなぐ選択領域であるとき
+     * ・2つとも要素が0						: 選択領域が存在しないとき
+     * ・0番目の要素が1以上、1番目の要素が0	: 選択選択モードでもう1点を選ばせるとき
+     * ・2つとも要素が1以上					: 異なる2点をつなぐ選択領域であるとき
      */
     public int[] selectedEdge = new int[2];
-    
+
     /**
      * コピーされたノートの全情報を格納するマップ
      * (キーの値) := 10 * (選択領域の始点を0とした行番号) + (列番号)
      * NOTE : ノートの位置の一意性は、「始点の行番号」と「列番号」との直積により表現可能
      */
     private SortedMap<Integer, UnitNote> copiedNoteMap = new TreeMap<>();
-    
+
     /**
      * 確認ダイアログのビューでの枠線の長さ(px単位)
      */
@@ -80,7 +80,7 @@ public final class SelectedAreaLayout extends FrameLayout {
      * ノート貼り付け時の確認ダイアログでのブロック・ノートのレイアウトをリセットする
      * 倍率は「x1」固定であり、ブロックの色は偶数個数のブロックの色と一致する
      *
-     * @param mainActivity メイン画面のアクティビティ
+     * @param mainActivity    メイン画面のアクティビティ
      * @param copiedChartView 確認ダイアログのビュー
      */
     public void reset(MainActivity mainActivity, View copiedChartView) {
@@ -219,7 +219,7 @@ public final class SelectedAreaLayout extends FrameLayout {
 
     /**
      * 選択領域の始点、終点を変更する
-     * 
+     *
      * @param mainActivity メイン画面のアクティビティ
      */
     public void changeSelectedEdge(MainActivity mainActivity) {
@@ -282,7 +282,7 @@ public final class SelectedAreaLayout extends FrameLayout {
 
         // ノートのレイアウトを取得
         NoteLayout noteLayout = mainActivity.findViewById(R.id.noteLayout);
-        
+
         // コピーされたノートの全情報を格納したマップの情報をすべて消去する
         copiedNoteMap.clear();
 
@@ -441,7 +441,7 @@ public final class SelectedAreaLayout extends FrameLayout {
      * 逆にどちらか一方存在しないときはホールドを回転せず、回転してきたノートがそのホールドと被った場合は、そのホールドを削除する
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param direction 回転方向
+     * @param direction    回転方向
      */
     public void rotateSelectedArea(MainActivity mainActivity, RotationDirection direction) {
         // ログ出力
@@ -547,9 +547,9 @@ public final class SelectedAreaLayout extends FrameLayout {
     /**
      * ノート貼り付け時の確認ダイアログ上にある上下、左右回転ボタンで動作するすべてのノートの回転動作を行う
      *
-     * @param mainActivity メイン画面のアクティビティ
+     * @param mainActivity    メイン画面のアクティビティ
      * @param copiedChartView 確認ダイアログのビュー
-     * @param direction 回転方向
+     * @param direction       回転方向
      */
     public void rotateCopiedNotes(MainActivity mainActivity, View copiedChartView, RotationDirection direction) {
         // ログ出力
