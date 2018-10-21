@@ -962,9 +962,9 @@ public abstract class MainCommonFunctions {
             // 1列のレイアウトの色の決定
             int color = (idx % 2 == 0) ?
                     Color.rgb(
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, 96),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, 48),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, 0)) :
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT)) :
                     Color.rgb(
                             sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, 0),
                             sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, 48),
@@ -1025,7 +1025,7 @@ public abstract class MainCommonFunctions {
 
         // ボタン群のレイアウトを右側に配置させるかどうかのフラグを取得
         boolean isRight = PreferenceManager.getDefaultSharedPreferences(mainActivity)
-                .getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, true);
+                .getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT_DEFAULT);
         // ログ出力
         Log.d(TAG, "updateLayoutPosition:isRight=" + isRight);
 
@@ -1091,9 +1091,9 @@ public abstract class MainCommonFunctions {
         // 3つのテキストビューの色をRGB値として取得
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
         int textColor = Color.rgb(
-                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, 0),
-                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, 255),
-                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, 0));
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT),
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT),
+                sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT));
 
         // 3つのテキストビューの色とテキストをセット
         bpmTextView.setTextColor(textColor);

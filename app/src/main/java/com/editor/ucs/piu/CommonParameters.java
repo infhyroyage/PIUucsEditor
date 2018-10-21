@@ -40,110 +40,210 @@ public abstract class CommonParameters {
      */
     public static final String PREFERENCE_BLOCK_EVEN_RED = "block_even_red";
     /**
+     * 偶数番目のブロックの色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_EVEN_RED_DEFAULT = 0;
+    /**
      * 偶数番目のブロックの色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_EVEN_GREEN = "block_even_green";
     /**
+     * 偶数番目のブロックの色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT = 48;
+    /**
      * 偶数番目のブロックの色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_EVEN_BLUE = "block_even_blue";
+    /**
+     * 偶数番目のブロックの色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT = 96;
 
     /**
      * 奇数番目のブロックの色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_ODD_RED = "block_odd_red";
     /**
+     * 奇数番目のブロックの色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_ODD_RED_DEFAULT = 96;
+    /**
      * 奇数番目のブロックの色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_ODD_GREEN = "block_odd_green";
     /**
+     * 奇数番目のブロックの色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_ODD_GREEN_DEFAULT = 48;
+    /**
      * 奇数番目のブロックの色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_ODD_BLUE = "block_odd_blue";
+    /**
+     * 奇数番目のブロックの色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_ODD_BLUE_DEFAULT = 0;
 
     /**
      * 枠線の色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_FRAME_RED = "frame_red";
     /**
+     * 枠線の色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_FRAME_RED_DEFAULT = 80;
+    /**
      * 枠線の色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_FRAME_GREEN = "frame_green";
     /**
+     * 枠線の色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_FRAME_GREEN_DEFAULT = 80;
+    /**
      * 枠線の色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_FRAME_BLUE = "frame_blue";
+    /**
+     * 枠線の色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_FRAME_BLUE_DEFAULT = 80;
 
     /**
      * ポインターが示すブロックの情報のテキストビューの色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_TEXT_RED = "block_text_red";
     /**
+     * ポインターが示すブロックの情報のテキストビューの色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_TEXT_RED_DEFAULT = 0;
+    /**
      * ポインターが示すブロックの情報のテキストビューの色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_TEXT_GREEN = "block_text_green";
     /**
+     * ポインターが示すブロックの情報のテキストビューの色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT = 255;
+    /**
      * ポインターが示すブロックの情報のテキストビューの色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BLOCK_TEXT_BLUE = "block_text_blue";
+    /**
+     * ポインターが示すブロックの情報のテキストビューの色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT = 0;
 
     /**
      * ボタン群のレイアウトの場所が右かどうかのプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_BUTTONS_POSITION_RIGHT = "buttons_position_right";
+    /**
+     * ボタン群のレイアウトの場所が右かどうかのプリファレンス情報のデフォルト値
+     */
+    public static final boolean PREFERENCE_BUTTONS_POSITION_RIGHT_DEFAULT = true;
 
     /**
      * 譜面再生時の確認ダイアログを今後表示しないかどうかのプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_PLAY_CONFIRMATION = "play_confirmation";
+    /**
+     * 譜面再生時の確認ダイアログを今後表示しないかどうかのプリファレンス情報のデフォルト値
+     */
+    public static final boolean PREFERENCE_PLAY_CONFIRMATION_DEFAULT = false;
 
     /**
      * ポインターの色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_POINTER_RED = "pointer_red";
     /**
+     * ポインターの色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_POINTER_RED_DEFAULT = 0;
+    /**
      * ポインターの色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_POINTER_GREEN = "pointer_green";
+    /**
+     * ポインターの色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_POINTER_GREEN_DEFAULT = 255;
     /**
      * ポインターの色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_POINTER_BLUE = "pointer_blue";
     /**
+     * ポインターの色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_POINTER_BLUE_DEFAULT = 0;
+    /**
      * ポインターの色(ALPHA値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_POINTER_ALPHA = "pointer_alpha";
+    /**
+     * ポインターの色(ALPHA値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_POINTER_ALPHA_DEFAULT = 64;
 
     /**
      * 領域の選択が有効になっているポインターの色(R値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_SELECTED_POINTER_RED = "selected_pointer_red";
     /**
+     * 領域の選択が有効になっているポインターの色(R値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_SELECTED_POINTER_RED_DEFAULT = 255;
+    /**
      * 領域の選択が有効になっているポインターの色(G値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_SELECTED_POINTER_GREEN = "selected_pointer_green";
+    /**
+     * 領域の選択が有効になっているポインターの色(G値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT = 0;
     /**
      * 領域の選択が有効になっているポインターの色(B値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_SELECTED_POINTER_BLUE = "selected_pointer_blue";
     /**
+     * 領域の選択が有効になっているポインターの色(B値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT = 255;
+    /**
      * 領域の選択が有効になっているポインターの色(ALPHA値)のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_SELECTED_POINTER_ALPHA = "selected_pointer_alpha";
+    /**
+     * 領域の選択が有効になっているポインターの色(ALPHA値)のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT = 64;
 
     /**
      * バイブレーションのプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_VIBRATION = "vibration";
+    /**
+     * バイブレーションのプリファレンス情報のデフォルト値
+     */
+    public static final boolean PREFERENCE_VIBRATION_DEFAULT = false;
 
     /**
      * 譜面倍率のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_ZOOM = "zoom";
     /**
+     * 譜面倍率のプリファレンス情報のデフォルト値
+     */
+    public static final float PREFERENCE_ZOOM_DEFAULT = 1.0f;
+    /**
      * 譜面倍率のラジオボタンの添字番号のプリファレンス情報を取得するためのタグ
      */
     public static final String PREFERENCE_ZOOM_INDEX = "zoom_index";
+    /**
+     * 譜面倍率のラジオボタンの添字番号のプリファレンス情報のデフォルト値
+     */
+    public static final int PREFERENCE_ZOOM_INDEX_DEFAULT = 3;
 
     /**
      * 内部ストレージからucsファイルを読み込むパーミッションが許可されてない場合、

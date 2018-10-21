@@ -138,7 +138,7 @@ public class UnitBlock {
                     // 譜面編集をロックしているか&譜面が再生中かどうかのチェック
                     if (!((ToggleButton) mainActivity.findViewById(R.id.toggleButtonEditLock)).isChecked() && chartScrollView.isScrolled) {
                         // バイブレーションが「ON」の場合、25ミリ秒間バイブレーションを行う
-                        if (vibrator != null && sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, false)) {
+                        if (vibrator != null && sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, CommonParameters.PREFERENCE_VIBRATION_DEFAULT)) {
                             vibrator.vibrate(25);
                         }
 
@@ -160,7 +160,7 @@ public class UnitBlock {
                     // 譜面編集をロックしているか&譜面が再生中かどうかのチェック
                     if (!((ToggleButton) mainActivity.findViewById(R.id.toggleButtonEditLock)).isChecked() && chartScrollView.isScrolled) {
                         // バイブレーションが「ON」の場合、通常タップ時より長い50ミリ秒間バイブレーションを行う
-                        if (vibrator != null && sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, false)) {
+                        if (vibrator != null && sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, CommonParameters.PREFERENCE_VIBRATION_DEFAULT)) {
                             vibrator.vibrate(50);
                         }
 

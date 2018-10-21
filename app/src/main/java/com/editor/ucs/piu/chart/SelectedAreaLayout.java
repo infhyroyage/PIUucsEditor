@@ -121,9 +121,9 @@ public final class SelectedAreaLayout extends FrameLayout {
             LayoutParams unitBlockRowParams = new LayoutParams((int) noteLength, (int) (noteLength * copiedLength - 2 * frameLength));
             unitBlockRowParams.setMargins((int) (column * (noteLength + frameLength)), (int) frameLength, 0, 0);
             clmLayout.setBackgroundColor(Color.rgb(
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, 96),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, 48),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, 0)));
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT)));
             // 1列ブロックをブロックのレイアウトに追加
             blockLayout.addView(clmLayout, unitBlockRowParams);
         }

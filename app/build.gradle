@@ -7,8 +7,8 @@ android {
         applicationId "com.editor.ucs.piu"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 181011
-        versionName '18.10.11'
+        versionCode 181021
+        versionName '18.10.21'
     }
     lintOptions {
         checkReleaseBuilds false

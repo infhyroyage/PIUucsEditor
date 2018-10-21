@@ -107,7 +107,7 @@ public enum CommonDialogType {
     /**
      * 詳細設定画面の「ポインターの色(譜面選択)」を押したタイミングを認識するコード
      */
-    LIST_POINTER_SELECTED_COLOR,
+    LIST_SELECTED_POINTER_COLOR,
 
     /**
      * 詳細設定画面の「開発情報」を押したタイミングを認識するコード

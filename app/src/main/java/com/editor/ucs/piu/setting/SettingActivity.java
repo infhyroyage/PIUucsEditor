@@ -47,7 +47,7 @@ public class SettingActivity extends AppCompatActivity {
         // 「ポインターの色(通常)」のアイテムを作成し、詳細設定のリストビューに追加
         itemList.add(CommonDialogType.LIST_POINTER_COLOR);
         // 「ポインターの色(譜面選択)」のアイテムを作成し、詳細設定のリストビューに追加
-        itemList.add(CommonDialogType.LIST_POINTER_SELECTED_COLOR);
+        itemList.add(CommonDialogType.LIST_SELECTED_POINTER_COLOR);
         // 「枠線の色」のアイテムを作成し、詳細設定のリストビューに追加
         itemList.add(CommonDialogType.LIST_FRAME_COLOR);
         // 「ブロック情報のテキストの色」のアイテムを作成し、詳細設定のリストビューに追加
@@ -90,7 +90,7 @@ public class SettingActivity extends AppCompatActivity {
                     case LIST_POINTER_COLOR:
                         SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
                         break;
-                    case LIST_POINTER_SELECTED_COLOR:
+                    case LIST_SELECTED_POINTER_COLOR:
                         SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerSelectedColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
                         break;
                     case LIST_VIBRATION:

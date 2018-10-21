@@ -285,7 +285,7 @@ public class MainDialogFragment extends DialogFragment {
                 // 現在の譜面倍率を取得し、それを譜面倍率のラジオボタンのデフォルトとしてセット
                 final View zoomSettingView = inflater.inflate(R.layout.dialog_zoom, (ViewGroup) mainActivity.findViewById(R.id.zoomLayout));
                 final RadioGroup radioGroup = zoomSettingView.findViewById(R.id.zoomRadioGroup);
-                ((RadioButton) radioGroup.getChildAt(PreferenceManager.getDefaultSharedPreferences(mainActivity).getInt(CommonParameters.PREFERENCE_ZOOM_INDEX, 3))).setChecked(true);
+                ((RadioButton) radioGroup.getChildAt(PreferenceManager.getDefaultSharedPreferences(mainActivity).getInt(CommonParameters.PREFERENCE_ZOOM_INDEX, CommonParameters.PREFERENCE_ZOOM_INDEX_DEFAULT))).setChecked(true);
 
                 builder.setIcon(android.R.drawable.ic_dialog_info)
                         .setView(zoomSettingView)

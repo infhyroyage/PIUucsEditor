@@ -4,7 +4,8 @@
     <string name="button_block_merge">ブロック\n結合</string>
 	<string name="button_block_setting">ブロック\n設定</string>
 	<string name="button_block_split">ブロック\n分割</string>
-	<string name="button_copied_upDown">上下回転</string>
+    <string name="button_color_default">デフォルト色にリセット</string>
+    <string name="button_copied_upDown">上下回転</string>
     <string name="button_copied_leftRight">左右回転</string>
     <string name="button_download_filter">フィルター</string>
     <string name="button_edit_copy">選択範囲を\nコピー</string>

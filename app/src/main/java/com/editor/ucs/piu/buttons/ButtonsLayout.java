@@ -469,17 +469,17 @@ public class ButtonsLayout extends LinearLayout implements AdapterView.OnItemSel
                 if (isChecked) {
                     // トグルボタンがOFFからONとなった場合
                     pointerLayout.setBackgroundColor(Color.rgb(
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, 255)));
-                    pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, 64));
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT)));
+                    pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT));
                 } else {
                     // トグルボタンがONからOFFとなった場合
                     pointerLayout.setBackgroundColor(Color.rgb(
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255),
-                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)));
-                    pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64));
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, CommonParameters.PREFERENCE_POINTER_RED_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT),
+                            sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT)));
+                    pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT));
 
                     // 選択領域の1点だけが選択された場合は1点の選択領域を削除し、選択領域とポインターのレイアウトを更新する
                     if (selectedAreaLayout.selectedEdge[0] > 0 && selectedAreaLayout.selectedEdge[1] == 0) {
@@ -730,7 +730,7 @@ public class ButtonsLayout extends LinearLayout implements AdapterView.OnItemSel
         buttonOtherPlayInitially.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (toggleButtonOtherNoteSound.isChecked() && !sharedPreferences.getBoolean(CommonParameters.PREFERENCE_PLAY_CONFIRMATION, false)) {
+                if (toggleButtonOtherNoteSound.isChecked() && !sharedPreferences.getBoolean(CommonParameters.PREFERENCE_PLAY_CONFIRMATION, CommonParameters.PREFERENCE_PLAY_CONFIRMATION_DEFAULT)) {
                     // 譜面再生確認ダイアログを表示
                     MainDialogFragment.newInstance(mainActivity, CommonDialogType.BUTTON_OTHER_PLAY_INITIALLY, R.string.button_other_playInitially, R.string.button_other_playInitially).show(mainActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_MAIN_ACTIVITY);
                 } else {
@@ -745,7 +745,7 @@ public class ButtonsLayout extends LinearLayout implements AdapterView.OnItemSel
         buttonOtherPlayCurrently.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (toggleButtonOtherNoteSound.isChecked() && !sharedPreferences.getBoolean(CommonParameters.PREFERENCE_PLAY_CONFIRMATION, false)) {
+                if (toggleButtonOtherNoteSound.isChecked() && !sharedPreferences.getBoolean(CommonParameters.PREFERENCE_PLAY_CONFIRMATION, CommonParameters.PREFERENCE_PLAY_CONFIRMATION_DEFAULT)) {
                     // 譜面再生確認ダイアログを表示
                     MainDialogFragment.newInstance(mainActivity, CommonDialogType.BUTTON_OTHER_PLAY_CURRENTLY, R.string.button_other_playCurrently, R.string.button_other_playCurrently).show(mainActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_MAIN_ACTIVITY);
                 } else {

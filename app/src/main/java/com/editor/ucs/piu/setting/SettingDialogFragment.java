@@ -88,7 +88,7 @@ public class SettingDialogFragment extends DialogFragment {
                     final RadioButton radioButtonLeft = positionView.findViewById(R.id.positionRadioButtonLeft);
 
                     // 現在選択中の位置から、上記ラジオボタンの一方のみをチェック
-                    if (PreferenceManager.getDefaultSharedPreferences(settingActivity).getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, true)) {
+                    if (PreferenceManager.getDefaultSharedPreferences(settingActivity).getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT_DEFAULT)) {
                         radioButtonRight.setChecked(true);
                         radioButtonLeft.setChecked(false);
                     } else {
@@ -148,7 +148,7 @@ public class SettingDialogFragment extends DialogFragment {
                     return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)}, builder, type);
                 case LIST_POINTER_COLOR:
                     return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)}, builder, type);
-                case LIST_POINTER_SELECTED_COLOR:
+                case LIST_SELECTED_POINTER_COLOR:
                     return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, 255)}, builder, type);
                 default:
                     throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
@@ -170,13 +170,15 @@ public class SettingDialogFragment extends DialogFragment {
      */
     private Dialog createColorChangeDialog(int[] before, AlertDialog.Builder builder, final CommonDialogType commonDialogType) throws IllegalArgumentException {
         // 引数のエラーチェック
-        if (before.length < 3)
+        if (before.length < 3) {
             throw new IllegalArgumentException("The number of arguments is too less.");
-        if (before.length > 4)
+        } else if (before.length > 4) {
             throw new IllegalArgumentException("The number of arguments is too many.");
+        }
         for (int b : before) {
-            if (b < 0 || b > 255)
+            if (b < 0 || b > 255) {
                 throw new IllegalArgumentException("ARGB parameters are out of range.");
+            }
         }
 
         LayoutInflater inflater = (LayoutInflater) settingActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -189,21 +191,28 @@ public class SettingDialogFragment extends DialogFragment {
 
         // Alpha値を変動させるかどうかのフラグを生成し、変動させない場合はAlpha値を変更させる列を非表示にする
         final boolean isAlpha = before.length == 4;
-        if (!isAlpha)
+        if (!isAlpha) {
             colorChangeView.findViewById(R.id.colorChangeAlphaTableRow).setVisibility(View.GONE);
+        }
 
         // 変更前後の色を表示するフレームを取得
         final FrameLayout from = colorChangeView.findViewById(R.id.colorChangeFrom);
         final FrameLayout to = colorChangeView.findViewById(R.id.colorChangeTo);
         // フレームの初期値を変更前のARGB値にセット
         from.setBackgroundColor(Color.rgb(before[before.length - 3], before[before.length - 2], before[before.length - 1]));
-        if (isAlpha) from.getBackground().setAlpha(before[0]);
+        if (isAlpha) {
+            from.getBackground().setAlpha(before[0]);
+        }
         to.setBackgroundColor(Color.rgb(before[before.length - 3], before[before.length - 2], before[before.length - 1]));
-        if (isAlpha) to.getBackground().setAlpha(before[0]);
+        if (isAlpha) {
+            to.getBackground().setAlpha(before[0]);
+        }
 
         // 変更後のARGB値を出力するテキストビューを取得し、初期テキストを変更前のARGB値としてセット
         final TextView alphaTextView = isAlpha ? (TextView) colorChangeView.findViewById(R.id.colorChangeAlphaTextView) : null;
-        if (isAlpha) alphaTextView.setText(getString(R.string.textView_color_alpha, before[0]));
+        if (isAlpha) {
+            alphaTextView.setText(getString(R.string.textView_color_alpha, before[0]));
+        }
         final TextView redTextView = colorChangeView.findViewById(R.id.colorChangeRedTextView);
         redTextView.setText(getString(R.string.textView_color_red, before[before.length - 3]));
         final TextView greenTextView = colorChangeView.findViewById(R.id.colorChangeGreenTextView);
@@ -242,7 +251,9 @@ public class SettingDialogFragment extends DialogFragment {
                 // 変更後のRed値をテキストビューとフレームにセット
                 redTextView.setText(getString(R.string.textView_color_red, i));
                 to.setBackgroundColor(Color.rgb(i, greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                if (isAlpha) {
+                    to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                }
             }
 
             @Override
@@ -260,7 +271,9 @@ public class SettingDialogFragment extends DialogFragment {
                 // 変更後のGreen値をテキストビューとフレームにセット
                 greenTextView.setText(getString(R.string.textView_color_green, i));
                 to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), i, blueSeekBar.getProgress()));
-                if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                if (isAlpha) {
+                    to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                }
             }
 
             @Override
@@ -278,7 +291,9 @@ public class SettingDialogFragment extends DialogFragment {
                 // 変更後のBlue値をテキストビューとフレームにセット
                 blueTextView.setText(getString(R.string.textView_color_blue, i));
                 to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), i));
-                if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                if (isAlpha) {
+                    to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                }
             }
 
             @Override
@@ -325,7 +340,9 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のRed値をテキストビューとフレームとシークバーにセット
                     redTextView.setText(getString(R.string.textView_color_red, nowProgress - 1));
                     to.setBackgroundColor(Color.rgb(nowProgress - 1, greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     redSeekBar.setProgress(nowProgress - 1);
                 }
             }
@@ -338,7 +355,9 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のRed値をテキストビューとフレームとシークバーにセット
                     redTextView.setText(getString(R.string.textView_color_red, nowProgress + 1));
                     to.setBackgroundColor(Color.rgb(nowProgress + 1, greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     redSeekBar.setProgress(nowProgress + 1);
                 }
             }
@@ -351,7 +370,9 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のGreen値をテキストビューとフレームとシークバーにセット
                     greenTextView.setText(getString(R.string.textView_color_green, nowProgress - 1));
                     to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), nowProgress - 1, blueSeekBar.getProgress()));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     greenSeekBar.setProgress(nowProgress - 1);
                 }
             }
@@ -364,7 +385,9 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のGreen値をテキストビューとフレームとシークバーにセット
                     greenTextView.setText(getString(R.string.textView_color_green, nowProgress + 1));
                     to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), nowProgress + 1, blueSeekBar.getProgress()));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     greenSeekBar.setProgress(nowProgress + 1);
                 }
             }
@@ -377,7 +400,9 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のBlue値をテキストビューとフレームとシークバーにセット
                     blueTextView.setText(getString(R.string.textView_color_blue, nowProgress - 1));
                     to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), nowProgress - 1));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     blueSeekBar.setProgress(nowProgress - 1);
                 }
             }
@@ -390,12 +415,78 @@ public class SettingDialogFragment extends DialogFragment {
                     // 変更後のBlue値をテキストビューとフレームとシークバーにセット
                     blueTextView.setText(getString(R.string.textView_color_blue, nowProgress + 1));
                     to.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), nowProgress + 1));
-                    if (isAlpha) to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    if (isAlpha) {
+                        to.getBackground().setAlpha(alphaSeekBar.getProgress());
+                    }
                     blueSeekBar.setProgress(nowProgress + 1);
                 }
             }
         });
+        colorChangeView.findViewById(R.id.colorChangeDefaultButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // どの色のデフォルト値を取得するのか場合分けする
+                int red, green, blue;
+                switch (commonDialogType) {
+                    case LIST_BLOCK_EVEN_COLOR:
+                        red = CommonParameters.PREFERENCE_BLOCK_EVEN_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT;
+                        break;
+                    case LIST_BLOCK_ODD_COLOR:
+                        red = CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT;
+                        break;
+                    case LIST_BLOCK_TEXT_COLOR:
+                        red = CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT;
+                        break;
+                    case LIST_FRAME_COLOR:
+                        red = CommonParameters.PREFERENCE_FRAME_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT;
+                        break;
+                    case LIST_POINTER_COLOR:
+                        red = CommonParameters.PREFERENCE_POINTER_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT;
+                        break;
+                    case LIST_SELECTED_POINTER_COLOR:
+                        red = CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT;
+                        green = CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT;
+                        blue = CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT;
+                        break;
+                    default:
+                        throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
+                }
 
+                // デフォルトのRGB値をテキストビューにセット
+                redTextView.setText(getString(R.string.textView_color_red, red));
+                greenTextView.setText(getString(R.string.textView_color_green, green));
+                blueTextView.setText(getString(R.string.textView_color_blue, blue));
+
+                // デフォルトのRGB値をシークバーにセット
+                redSeekBar.setProgress(red);
+                greenSeekBar.setProgress(green);
+                blueSeekBar.setProgress(blue);
+
+                // デフォルトのRGB値をフレームにセット
+                to.setBackgroundColor(Color.rgb(red, green, blue));
+                // デフォルトのAlpha値をフレームにセット
+                if (isAlpha) {
+                    switch (commonDialogType) {
+                        case LIST_POINTER_COLOR:
+                            to.getBackground().setAlpha(CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT);
+                            break;
+                        case LIST_SELECTED_POINTER_COLOR:
+                            to.getBackground().setAlpha(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT);
+                            break;
+                    }
+                }
+            }
+        });
 
         builder.setIcon(android.R.drawable.ic_dialog_info)
                 .setView(colorChangeView)
@@ -475,7 +566,7 @@ public class SettingDialogFragment extends DialogFragment {
                                     pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
                                 }
                                 break;
-                            case LIST_POINTER_SELECTED_COLOR:
+                            case LIST_SELECTED_POINTER_COLOR:
                                 pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
                                 ToggleButton selectedToggleButton = settingActivity.findViewById(R.id.toggleButtonEditSelect);
                                 if (alphaSeekBar != null) {

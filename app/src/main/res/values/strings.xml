@@ -7,6 +7,7 @@
     <string name="button_block_merge">Block\nMerge</string>
     <string name="button_block_setting">Block\nSetting</string>
     <string name="button_block_split">Block\nSplit</string>
+    <string name="button_color_default">Reset Default Color</string>
     <string name="button_color_minus" translatable="false">-</string>
     <string name="button_color_plus" translatable="false">+</string>
     <string name="button_copied_upDown">Vertical Rotation</string>

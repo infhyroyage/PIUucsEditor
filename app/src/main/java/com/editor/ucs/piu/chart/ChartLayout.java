@@ -117,7 +117,7 @@ public class ChartLayout extends FrameLayout {
          * 取得失敗時は1.0で取得
          */
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mainActivity);
-        zoom = sharedPreferences.getFloat(CommonParameters.PREFERENCE_ZOOM, 1.0f);
+        zoom = sharedPreferences.getFloat(CommonParameters.PREFERENCE_ZOOM, CommonParameters.PREFERENCE_ZOOM_DEFAULT);
 
         // 既に譜面のレイアウトがメイン画面に表示されている場合
         if (mainActivity.ucs != null) {
@@ -154,24 +154,24 @@ public class ChartLayout extends FrameLayout {
 
             // 枠線の色を変更する
             chartScrollView.setBackgroundColor(Color.rgb(
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)));
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, CommonParameters.PREFERENCE_FRAME_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT)));
 
             // ポインターのレイアウトの色を変更し、表示する
             pointerLayout.setBackgroundColor(Color.rgb(
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)));
-            pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64));
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, CommonParameters.PREFERENCE_POINTER_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT)));
+            pointerLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT));
             pointerLayout.setVisibility(VISIBLE);
 
             // 選択領域のレイアウトの色を変更する
             selectedAreaLayout.setBackgroundColor(Color.rgb(
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0),
-                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, 255)));
-            selectedAreaLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, 64));
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT)));
+            selectedAreaLayout.getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT));
 
             // ポインターが示すブロックの3つの情報のテキストビューを表示する
             mainActivity.findViewById(R.id.bpmTextView).setVisibility(VISIBLE);
