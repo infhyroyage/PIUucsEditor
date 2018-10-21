@@ -368,26 +368,26 @@ public abstract class MainCommonFunctions {
         boolean isPerformance = false;
         RadioGroup radioGroup = newUcsView.findViewById(R.id.newUcsRadioGroup);
         switch (radioGroup.getCheckedRadioButtonId()) {
-            // 「Single」の場合
-            case R.id.newUcsSingle:
-                chartLayout.columnSize = 5;
-                isPerformance = false;
-                break;
-            // 「Single Performance」の場合
-            case R.id.newUcsSinglePerformance:
-                chartLayout.columnSize = 5;
-                isPerformance = true;
-                break;
-            // 「Double」の場合
-            case R.id.newUcsDouble:
-                chartLayout.columnSize = 10;
-                isPerformance = false;
-                break;
-            // 「Double Performance」の場合
-            case R.id.newUcsDoublePerformance:
-                chartLayout.columnSize = 10;
-                isPerformance = true;
-                break;
+        // 「Single」の場合
+        case R.id.newUcsSingle:
+            chartLayout.columnSize = 5;
+            isPerformance = false;
+            break;
+        // 「Single Performance」の場合
+        case R.id.newUcsSinglePerformance:
+            chartLayout.columnSize = 5;
+            isPerformance = true;
+            break;
+        // 「Double」の場合
+        case R.id.newUcsDouble:
+            chartLayout.columnSize = 10;
+            isPerformance = false;
+            break;
+        // 「Double Performance」の場合
+        case R.id.newUcsDoublePerformance:
+            chartLayout.columnSize = 10;
+            isPerformance = true;
+            break;
         }
 
         /*
@@ -701,20 +701,20 @@ public abstract class MainCommonFunctions {
             // 拒否された場合、パーミッションの許可を求める種別を指定
             String[] requestPermissions;
             switch (permission) {
-                // 外部ストレージへの読み込みのパーミッションの場合
-                case Manifest.permission.READ_EXTERNAL_STORAGE:
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        requestPermissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                    } else {
-                        requestPermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                    }
-                    break;
-                // 外部ストレージへの書き込みのパーミッションの場合
-                case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+            // 外部ストレージへの読み込みのパーミッションの場合
+            case Manifest.permission.READ_EXTERNAL_STORAGE:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    requestPermissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                } else {
                     requestPermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                    break;
-                default:
-                    throw new IllegalArgumentException("The kind of permission is not supported.");
+                }
+                break;
+            // 外部ストレージへの書き込みのパーミッションの場合
+            case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                requestPermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                break;
+            default:
+                throw new IllegalArgumentException("The kind of permission is not supported.");
             }
 
             /*

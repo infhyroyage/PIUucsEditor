@@ -803,7 +803,7 @@ public class ButtonsLayout extends LinearLayout implements AdapterView.OnItemSel
      * ポインターの移動により、3つのテキストビューとボタンの(Beat値)のテキストを変更するかどうかのチェック
      *
      * @param mainActivity メイン画面のアクティビティ
-     * @param preRow	ポインターを移動する前の行番号
+     * @param preRow       ポインターを移動する前の行番号
      */
     private void checkTexts(MainActivity mainActivity, int preRow) {
         // 譜面のレイアウトを取得
@@ -852,129 +852,130 @@ public class ButtonsLayout extends LinearLayout implements AdapterView.OnItemSel
         // ログ出力
         Log.d(TAG, "onItemSelected:position=" + position);
         switch (position) {
-            // 「移動」が選択されたor譜面のレイアウトがメイン画面に表示されていない場合
-            case 0:
-                // 「移動」が選択された場合
-                if (mainActivity.ucs != null) {
-                    showMoveButtons();
-                }
-                // 譜面のレイアウトがメイン画面に表示されていない場合
-                else {
-                    // 「ucsファイル新規作成」、「ucsファイルを開く」、「ucsファイルサンプルダウンロード」、「詳細設定」のボタンを表示
-                    buttonFileNew.setVisibility(VISIBLE);
-                    buttonFileOpen.setVisibility(VISIBLE);
-                    buttonFileDownload.setVisibility(VISIBLE);
-                    buttonOtherSetting.setVisibility(VISIBLE);
-
-                    // 上記のボタンを現在表示中のリストに格納
-                    viewList.add(buttonFileNew);
-                    viewList.add(buttonFileOpen);
-                    viewList.add(buttonFileDownload);
-                    viewList.add(buttonOtherSetting);
-                }
-
-                break;
-            // 「編集」が選択された場合
-            case 1:
-                // 編集関連のボタンを表示
-                if (!((ChartLayout) mainActivity.findViewById(R.id.chartLayout)).undoProcessStack.isEmpty()) {
-                    buttonEditUndo.setVisibility(VISIBLE);
-                }
-                if (!((ChartLayout) mainActivity.findViewById(R.id.chartLayout)).redoProcessStack.isEmpty()) {
-                    buttonEditRedo.setVisibility(VISIBLE);
-                }
-                if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
-                    toggleButtonEditSelect.setVisibility(VISIBLE);
-                    buttonEditPaste.setVisibility(VISIBLE);
-                }
-                toggleButtonEditLock.setVisibility(VISIBLE);
-                if (((SelectedAreaLayout) mainActivity.findViewById(R.id.selectedAreaLayout)).selectedEdge[1] > 0) {
-                    buttonEditUpDown.setVisibility(VISIBLE);
-                    buttonEditLeftRight.setVisibility(VISIBLE);
-                    buttonEditDelete.setVisibility(VISIBLE);
-                    buttonEditCut.setVisibility(VISIBLE);
-                    buttonEditCopy.setVisibility(VISIBLE);
-                }
-
-                // 編集関連のボタンを現在表示中のリストに格納
-                viewList.add(buttonEditUndo);
-                viewList.add(buttonEditRedo);
-                viewList.add(toggleButtonEditSelect);
-                viewList.add(toggleButtonEditLock);
-                viewList.add(buttonEditUpDown);
-                viewList.add(buttonEditLeftRight);
-                viewList.add(buttonEditDelete);
-                viewList.add(buttonEditCut);
-                viewList.add(buttonEditCopy);
-                viewList.add(buttonEditPaste);
-
-                break;
-            // 「ブロック」が選択された場合
-            case 2:
-                // ブロック関連のボタンを表示
-                if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
-                    buttonBlockAdd.setVisibility(VISIBLE);
-                    buttonBlockDelete.setVisibility(VISIBLE);
-                }
-                buttonBlockSetting.setVisibility(VISIBLE);
-                buttonBlockSplit.setVisibility(VISIBLE);
-                buttonBlockMerge.setVisibility(VISIBLE);
-
-                // ブロック関連のボタンを現在表示中のリストに格納
-                viewList.add(buttonBlockAdd);
-                viewList.add(buttonBlockSetting);
-                viewList.add(buttonBlockSplit);
-                viewList.add(buttonBlockMerge);
-                viewList.add(buttonBlockDelete);
-
-                break;
-            // 「ファイル」が選択された場合
-            case 3:
-                // ファイル入出力関連のボタンを表示する
+        // 「移動」が選択されたor譜面のレイアウトがメイン画面に表示されていない場合
+        case 0:
+            // 「移動」が選択された場合
+            if (mainActivity.ucs != null) {
+                showMoveButtons();
+            }
+            // 譜面のレイアウトがメイン画面に表示されていない場合
+            else {
+                // 「ucsファイル新規作成」、「ucsファイルを開く」、「ucsファイルサンプルダウンロード」、「詳細設定」のボタンを表示
                 buttonFileNew.setVisibility(VISIBLE);
                 buttonFileOpen.setVisibility(VISIBLE);
-                buttonFileRename.setVisibility(VISIBLE);
-                if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
-                    if (mainActivity.ucs.fileDir != null) {
-                        buttonFileSave.setVisibility(VISIBLE);
-                    }
-                    buttonFileSaveAs.setVisibility(VISIBLE);
-                }
                 buttonFileDownload.setVisibility(VISIBLE);
-
-                // ファイル入出力関連のボタンを現在表示中のリストに格納
-                viewList.add(buttonFileNew);
-                viewList.add(buttonFileOpen);
-                viewList.add(buttonFileRename);
-                viewList.add(buttonFileSave);
-                viewList.add(buttonFileSaveAs);
-                viewList.add(buttonFileDownload);
-
-                break;
-            // 「その他」が選択された場合
-            case 4:
-                // 上記以外のボタンを表示
-                if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
-                    toggleButtonOtherNoteSound.setVisibility(VISIBLE);
-                    buttonOtherPlayInitially.setVisibility(VISIBLE);
-                    buttonOtherPlayCurrently.setVisibility(VISIBLE);
-                }
-                buttonOtherZoom.setVisibility(VISIBLE);
                 buttonOtherSetting.setVisibility(VISIBLE);
 
-                // 上記以外のボタンを現在表示中のリストに格納
-                viewList.add(toggleButtonOtherNoteSound);
-                viewList.add(buttonOtherPlayInitially);
-                viewList.add(buttonOtherPlayCurrently);
-                viewList.add(buttonOtherZoom);
+                // 上記のボタンを現在表示中のリストに格納
+                viewList.add(buttonFileNew);
+                viewList.add(buttonFileOpen);
+                viewList.add(buttonFileDownload);
                 viewList.add(buttonOtherSetting);
+            }
 
-                break;
+            break;
+        // 「編集」が選択された場合
+        case 1:
+            // 編集関連のボタンを表示
+            if (!((ChartLayout) mainActivity.findViewById(R.id.chartLayout)).undoProcessStack.isEmpty()) {
+                buttonEditUndo.setVisibility(VISIBLE);
+            }
+            if (!((ChartLayout) mainActivity.findViewById(R.id.chartLayout)).redoProcessStack.isEmpty()) {
+                buttonEditRedo.setVisibility(VISIBLE);
+            }
+            if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
+                toggleButtonEditSelect.setVisibility(VISIBLE);
+                buttonEditPaste.setVisibility(VISIBLE);
+            }
+            toggleButtonEditLock.setVisibility(VISIBLE);
+            if (((SelectedAreaLayout) mainActivity.findViewById(R.id.selectedAreaLayout)).selectedEdge[1] > 0) {
+                buttonEditUpDown.setVisibility(VISIBLE);
+                buttonEditLeftRight.setVisibility(VISIBLE);
+                buttonEditDelete.setVisibility(VISIBLE);
+                buttonEditCut.setVisibility(VISIBLE);
+                buttonEditCopy.setVisibility(VISIBLE);
+            }
+
+            // 編集関連のボタンを現在表示中のリストに格納
+            viewList.add(buttonEditUndo);
+            viewList.add(buttonEditRedo);
+            viewList.add(toggleButtonEditSelect);
+            viewList.add(toggleButtonEditLock);
+            viewList.add(buttonEditUpDown);
+            viewList.add(buttonEditLeftRight);
+            viewList.add(buttonEditDelete);
+            viewList.add(buttonEditCut);
+            viewList.add(buttonEditCopy);
+            viewList.add(buttonEditPaste);
+
+            break;
+        // 「ブロック」が選択された場合
+        case 2:
+            // ブロック関連のボタンを表示
+            if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
+                buttonBlockAdd.setVisibility(VISIBLE);
+                buttonBlockDelete.setVisibility(VISIBLE);
+            }
+            buttonBlockSetting.setVisibility(VISIBLE);
+            buttonBlockSplit.setVisibility(VISIBLE);
+            buttonBlockMerge.setVisibility(VISIBLE);
+
+            // ブロック関連のボタンを現在表示中のリストに格納
+            viewList.add(buttonBlockAdd);
+            viewList.add(buttonBlockSetting);
+            viewList.add(buttonBlockSplit);
+            viewList.add(buttonBlockMerge);
+            viewList.add(buttonBlockDelete);
+
+            break;
+        // 「ファイル」が選択された場合
+        case 3:
+            // ファイル入出力関連のボタンを表示する
+            buttonFileNew.setVisibility(VISIBLE);
+            buttonFileOpen.setVisibility(VISIBLE);
+            buttonFileRename.setVisibility(VISIBLE);
+            if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
+                if (mainActivity.ucs.fileDir != null) {
+                    buttonFileSave.setVisibility(VISIBLE);
+                }
+                buttonFileSaveAs.setVisibility(VISIBLE);
+            }
+            buttonFileDownload.setVisibility(VISIBLE);
+
+            // ファイル入出力関連のボタンを現在表示中のリストに格納
+            viewList.add(buttonFileNew);
+            viewList.add(buttonFileOpen);
+            viewList.add(buttonFileRename);
+            viewList.add(buttonFileSave);
+            viewList.add(buttonFileSaveAs);
+            viewList.add(buttonFileDownload);
+
+            break;
+        // 「その他」が選択された場合
+        case 4:
+            // 上記以外のボタンを表示
+            if (Arrays.equals(((NoteLayout) mainActivity.findViewById(R.id.noteLayout)).holdEdge, new int[10])) {
+                toggleButtonOtherNoteSound.setVisibility(VISIBLE);
+                buttonOtherPlayInitially.setVisibility(VISIBLE);
+                buttonOtherPlayCurrently.setVisibility(VISIBLE);
+            }
+            buttonOtherZoom.setVisibility(VISIBLE);
+            buttonOtherSetting.setVisibility(VISIBLE);
+
+            // 上記以外のボタンを現在表示中のリストに格納
+            viewList.add(toggleButtonOtherNoteSound);
+            viewList.add(buttonOtherPlayInitially);
+            viewList.add(buttonOtherPlayCurrently);
+            viewList.add(buttonOtherZoom);
+            viewList.add(buttonOtherSetting);
+
+            break;
         }
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {}
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
     /**
      * ボタン群のレイアウトに移動関連のボタンを表示する

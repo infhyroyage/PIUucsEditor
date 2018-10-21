@@ -67,35 +67,35 @@ public class SettingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CommonDialogType item = itemList.get(i);
                 switch (item) {
-                    case LIST_BLOCK_EVEN_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockEvenColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_BLOCK_ODD_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockOddColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_BLOCK_TEXT_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockTextColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_BUTTONS_POSITION:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_buttonsPosition).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_FRAME_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_frameColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_LICENSE:
-                        // ライセンス情報を表示するアクティビティにインテントする
-                        OssLicensesMenuActivity.setActivityTitle(getString(R.string.textView_listView_title_license));
-                        startActivity(new Intent(settingActivity, OssLicensesMenuActivity.class));
-                        break;
-                    case LIST_POINTER_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_SELECTED_POINTER_COLOR:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerSelectedColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
-                    case LIST_VIBRATION:
-                        SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_vibration).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
-                        break;
+                case LIST_BLOCK_EVEN_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockEvenColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_BLOCK_ODD_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockOddColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_BLOCK_TEXT_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_blockTextColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_BUTTONS_POSITION:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_buttonsPosition).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_FRAME_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_frameColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_LICENSE:
+                    // ライセンス情報を表示するアクティビティにインテントする
+                    OssLicensesMenuActivity.setActivityTitle(getString(R.string.textView_listView_title_license));
+                    startActivity(new Intent(settingActivity, OssLicensesMenuActivity.class));
+                    break;
+                case LIST_POINTER_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_SELECTED_POINTER_COLOR:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_pointerSelectedColor).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
+                case LIST_VIBRATION:
+                    SettingDialogFragment.newInstance(settingActivity, item, R.string.textView_listView_title_vibration).show(settingActivity.getSupportFragmentManager(), CommonParameters.DIALOG_FRAGMENT_FROM_SETTING_ACTIVITY);
+                    break;
                 }
             }
         });

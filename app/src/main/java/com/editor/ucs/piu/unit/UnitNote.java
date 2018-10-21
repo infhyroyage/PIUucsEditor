@@ -150,46 +150,46 @@ public class UnitNote {
         NoteLayout noteLayout = mainActivity.findViewById(R.id.noteLayout);
 
         switch (column % 5) {
-            // 左下の場合
-            case 0:
-                if (noteLayout.holdEdge[column] > 0) {
-                    startView.setImageResource(R.drawable.edge0);
-                } else {
-                    startView.setImageResource(R.drawable.note0);
-                }
-                break;
-            // 左上の場合
-            case 1:
-                if (noteLayout.holdEdge[column] > 0) {
-                    startView.setImageResource(R.drawable.edge1);
-                } else {
-                    startView.setImageResource(R.drawable.note1);
-                }
-                break;
-            // 真中の場合
-            case 2:
-                if (noteLayout.holdEdge[column] > 0) {
-                    startView.setImageResource(R.drawable.edge2);
-                } else {
-                    startView.setImageResource(R.drawable.note2);
-                }
-                break;
-            // 右上の場合
-            case 3:
-                if (noteLayout.holdEdge[column] > 0) {
-                    startView.setImageResource(R.drawable.edge3);
-                } else {
-                    startView.setImageResource(R.drawable.note3);
-                }
-                break;
-            // 右下の場合
-            case 4:
-                if (noteLayout.holdEdge[column] > 0) {
-                    startView.setImageResource(R.drawable.edge4);
-                } else {
-                    startView.setImageResource(R.drawable.note4);
-                }
-                break;
+        // 左下の場合
+        case 0:
+            if (noteLayout.holdEdge[column] > 0) {
+                startView.setImageResource(R.drawable.edge0);
+            } else {
+                startView.setImageResource(R.drawable.note0);
+            }
+            break;
+        // 左上の場合
+        case 1:
+            if (noteLayout.holdEdge[column] > 0) {
+                startView.setImageResource(R.drawable.edge1);
+            } else {
+                startView.setImageResource(R.drawable.note1);
+            }
+            break;
+        // 真中の場合
+        case 2:
+            if (noteLayout.holdEdge[column] > 0) {
+                startView.setImageResource(R.drawable.edge2);
+            } else {
+                startView.setImageResource(R.drawable.note2);
+            }
+            break;
+        // 右上の場合
+        case 3:
+            if (noteLayout.holdEdge[column] > 0) {
+                startView.setImageResource(R.drawable.edge3);
+            } else {
+                startView.setImageResource(R.drawable.note3);
+            }
+            break;
+        // 右下の場合
+        case 4:
+            if (noteLayout.holdEdge[column] > 0) {
+                startView.setImageResource(R.drawable.edge4);
+            } else {
+                startView.setImageResource(R.drawable.note4);
+            }
+            break;
         }
 
         // ホールドかどうか判断
@@ -197,66 +197,66 @@ public class UnitNote {
             // 中抜きホールドかどうかのフラグ
             boolean isHollow = hollowStartList.size() == hollowGoalList.size() && hollowStartList.size() > 0;
             switch (column % 5) {
-                // 左下の場合
-                case 0:
-                    goalView.setImageResource(R.drawable.note0);
-                    if (isHollow) {
-                        holdView.setImageResource(R.drawable.hollow0);
-                        for (ImageView hollowView : hollowViewList) {
-                            hollowView.setImageResource(R.drawable.hold0);
-                        }
-                    } else {
-                        holdView.setImageResource(R.drawable.hold0);
+            // 左下の場合
+            case 0:
+                goalView.setImageResource(R.drawable.note0);
+                if (isHollow) {
+                    holdView.setImageResource(R.drawable.hollow0);
+                    for (ImageView hollowView : hollowViewList) {
+                        hollowView.setImageResource(R.drawable.hold0);
                     }
-                    break;
-                // 左上の場合
-                case 1:
-                    goalView.setImageResource(R.drawable.note1);
-                    if (isHollow) {
-                        holdView.setImageResource(R.drawable.hollow1);
-                        for (ImageView hollowView : hollowViewList) {
-                            hollowView.setImageResource(R.drawable.hold1);
-                        }
-                    } else {
-                        holdView.setImageResource(R.drawable.hold1);
+                } else {
+                    holdView.setImageResource(R.drawable.hold0);
+                }
+                break;
+            // 左上の場合
+            case 1:
+                goalView.setImageResource(R.drawable.note1);
+                if (isHollow) {
+                    holdView.setImageResource(R.drawable.hollow1);
+                    for (ImageView hollowView : hollowViewList) {
+                        hollowView.setImageResource(R.drawable.hold1);
                     }
-                    break;
-                // 真中の場合
-                case 2:
-                    goalView.setImageResource(R.drawable.note2);
-                    if (isHollow) {
-                        holdView.setImageResource(R.drawable.hollow2);
-                        for (ImageView hollowView : hollowViewList) {
-                            hollowView.setImageResource(R.drawable.hold2);
-                        }
-                    } else {
-                        holdView.setImageResource(R.drawable.hold2);
+                } else {
+                    holdView.setImageResource(R.drawable.hold1);
+                }
+                break;
+            // 真中の場合
+            case 2:
+                goalView.setImageResource(R.drawable.note2);
+                if (isHollow) {
+                    holdView.setImageResource(R.drawable.hollow2);
+                    for (ImageView hollowView : hollowViewList) {
+                        hollowView.setImageResource(R.drawable.hold2);
                     }
-                    break;
-                // 右上の場合
-                case 3:
-                    goalView.setImageResource(R.drawable.note3);
-                    if (isHollow) {
-                        holdView.setImageResource(R.drawable.hollow3);
-                        for (ImageView hollowView : hollowViewList) {
-                            hollowView.setImageResource(R.drawable.hold3);
-                        }
-                    } else {
-                        holdView.setImageResource(R.drawable.hold3);
+                } else {
+                    holdView.setImageResource(R.drawable.hold2);
+                }
+                break;
+            // 右上の場合
+            case 3:
+                goalView.setImageResource(R.drawable.note3);
+                if (isHollow) {
+                    holdView.setImageResource(R.drawable.hollow3);
+                    for (ImageView hollowView : hollowViewList) {
+                        hollowView.setImageResource(R.drawable.hold3);
                     }
-                    break;
-                // 右下の場合
-                case 4:
-                    goalView.setImageResource(R.drawable.note4);
-                    if (isHollow) {
-                        holdView.setImageResource(R.drawable.hollow4);
-                        for (ImageView hollowView : hollowViewList) {
-                            hollowView.setImageResource(R.drawable.hold4);
-                        }
-                    } else {
-                        holdView.setImageResource(R.drawable.hold4);
+                } else {
+                    holdView.setImageResource(R.drawable.hold3);
+                }
+                break;
+            // 右下の場合
+            case 4:
+                goalView.setImageResource(R.drawable.note4);
+                if (isHollow) {
+                    holdView.setImageResource(R.drawable.hollow4);
+                    for (ImageView hollowView : hollowViewList) {
+                        hollowView.setImageResource(R.drawable.hold4);
                     }
-                    break;
+                } else {
+                    holdView.setImageResource(R.drawable.hold4);
+                }
+                break;
             }
         }
     }

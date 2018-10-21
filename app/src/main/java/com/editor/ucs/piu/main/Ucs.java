@@ -163,29 +163,29 @@ public class Ucs {
             rowNum++;
             boolean isPerformance;
             switch (rowStr) {
-                case ":Mode=Single":
-                    // Single譜面の場合
-                    chartLayout.columnSize = 5;
-                    isPerformance = false;
-                    break;
-                case ":Mode=Double":
-                    // Double譜面の場合
-                    chartLayout.columnSize = 10;
-                    isPerformance = false;
-                    break;
-                case ":Mode=S-Performance":
-                    // Single Performance譜面の場合
-                    chartLayout.columnSize = 5;
-                    isPerformance = true;
-                    break;
-                case ":Mode=D-Performance":
-                    // Double Performance譜面の場合
-                    chartLayout.columnSize = 10;
-                    isPerformance = true;
-                    break;
-                default:
-                    // 上記以外の文字の場合は不正フォーマットとする
-                    throw new IllegalUcsFormatException(rowNum);
+            case ":Mode=Single":
+                // Single譜面の場合
+                chartLayout.columnSize = 5;
+                isPerformance = false;
+                break;
+            case ":Mode=Double":
+                // Double譜面の場合
+                chartLayout.columnSize = 10;
+                isPerformance = false;
+                break;
+            case ":Mode=S-Performance":
+                // Single Performance譜面の場合
+                chartLayout.columnSize = 5;
+                isPerformance = true;
+                break;
+            case ":Mode=D-Performance":
+                // Double Performance譜面の場合
+                chartLayout.columnSize = 10;
+                isPerformance = true;
+                break;
+            default:
+                // 上記以外の文字の場合は不正フォーマットとする
+                throw new IllegalUcsFormatException(rowNum);
             }
 
             int isSingle = (chartLayout.columnSize == 5) ? 5 : 0;
@@ -248,65 +248,65 @@ public class Ucs {
                 accumulatedRow++;
                 for (byte i = 0; i < chartLayout.columnSize; i++) {
                     switch (rowStr.charAt(i)) {
-                        // 単ノートの場合
-                        case 'X':
-                            // 不正なホールドの記述かどうかチェック
-                            if (startHolds[i] > 0 || startHollows[i] > 0) {
-                                throw new IllegalUcsFormatException(rowNum);
-                            }
-                            // 単ノートをリストに追加
-                            noteList.add(new UnitNote(mainActivity, (byte) (i + isSingle), accumulatedRow));
-                            break;
-                        // ホールドor中抜けホールドの始点の場合
-                        case 'M':
-                            // 不正なホールドの記述かどうかチェック
-                            if (startHolds[i] > 0 || startHollows[i] > 0) {
-                                throw new IllegalUcsFormatException(rowNum);
-                            }
-                            startHolds[i] = accumulatedRow;
-                            startHollows[i] = accumulatedRow;
-                            break;
-                        // ホールドor中抜けホールドの中間の場合
-                        case 'H':
-                            // 不正なホールドの記述かどうかチェック
-                            if (startHolds[i] == 0) {
-                                throw new IllegalUcsFormatException(rowNum);
-                            }
-                            // 中抜きホールドかどうかチェック
-                            if (startHollows[i] == 0) {
-                                startHollows[i] = accumulatedRow;
-                            }
-                            break;
-                        // ホールドor中抜けホールドの終点の場合
-                        case 'W':
-                            // 不正なホールドの記述かどうかチェック
-                            if (startHolds[i] == 0) {
-                                throw new IllegalUcsFormatException(rowNum);
-                            }
-                            // 中抜きホールドかどうかチェック
-                            if (hollowStartLists.get(i).size() > 0 && hollowGoalLists.get(i).size() > 0 && startHollows[i] != 0) {
-                                hollowStartLists.get(i).add(startHollows[i]);
-                                hollowGoalLists.get(i).add(accumulatedRow + 1);
-                            }
-                            // ホールドor中抜きホールドをリストに追加
-                            noteList.add(new UnitNote(mainActivity, (byte) (i + isSingle), startHolds[i], accumulatedRow, hollowStartLists.get(i), hollowGoalLists.get(i)));
-                            startHolds[i] = 0;
-                            startHollows[i] = 0;
-                            hollowStartLists.get(i).clear();
-                            hollowGoalLists.get(i).clear();
-                            break;
-                        // 何もないor中抜けホールドの中間の場合
-                        case '.':
-                            // 中抜きホールドかどうかチェック
-                            if (startHollows[i] > 0) {
-                                hollowStartLists.get(i).add(startHollows[i]);
-                                hollowGoalLists.get(i).add(accumulatedRow);
-                                startHollows[i] = 0;
-                            }
-                            break;
-                        // 上記以外の文字の場合は不正フォーマットとする
-                        default:
+                    // 単ノートの場合
+                    case 'X':
+                        // 不正なホールドの記述かどうかチェック
+                        if (startHolds[i] > 0 || startHollows[i] > 0) {
                             throw new IllegalUcsFormatException(rowNum);
+                        }
+                        // 単ノートをリストに追加
+                        noteList.add(new UnitNote(mainActivity, (byte) (i + isSingle), accumulatedRow));
+                        break;
+                    // ホールドor中抜けホールドの始点の場合
+                    case 'M':
+                        // 不正なホールドの記述かどうかチェック
+                        if (startHolds[i] > 0 || startHollows[i] > 0) {
+                            throw new IllegalUcsFormatException(rowNum);
+                        }
+                        startHolds[i] = accumulatedRow;
+                        startHollows[i] = accumulatedRow;
+                        break;
+                    // ホールドor中抜けホールドの中間の場合
+                    case 'H':
+                        // 不正なホールドの記述かどうかチェック
+                        if (startHolds[i] == 0) {
+                            throw new IllegalUcsFormatException(rowNum);
+                        }
+                        // 中抜きホールドかどうかチェック
+                        if (startHollows[i] == 0) {
+                            startHollows[i] = accumulatedRow;
+                        }
+                        break;
+                    // ホールドor中抜けホールドの終点の場合
+                    case 'W':
+                        // 不正なホールドの記述かどうかチェック
+                        if (startHolds[i] == 0) {
+                            throw new IllegalUcsFormatException(rowNum);
+                        }
+                        // 中抜きホールドかどうかチェック
+                        if (hollowStartLists.get(i).size() > 0 && hollowGoalLists.get(i).size() > 0 && startHollows[i] != 0) {
+                            hollowStartLists.get(i).add(startHollows[i]);
+                            hollowGoalLists.get(i).add(accumulatedRow + 1);
+                        }
+                        // ホールドor中抜きホールドをリストに追加
+                        noteList.add(new UnitNote(mainActivity, (byte) (i + isSingle), startHolds[i], accumulatedRow, hollowStartLists.get(i), hollowGoalLists.get(i)));
+                        startHolds[i] = 0;
+                        startHollows[i] = 0;
+                        hollowStartLists.get(i).clear();
+                        hollowGoalLists.get(i).clear();
+                        break;
+                    // 何もないor中抜けホールドの中間の場合
+                    case '.':
+                        // 中抜きホールドかどうかチェック
+                        if (startHollows[i] > 0) {
+                            hollowStartLists.get(i).add(startHollows[i]);
+                            hollowGoalLists.get(i).add(accumulatedRow);
+                            startHollows[i] = 0;
+                        }
+                        break;
+                    // 上記以外の文字の場合は不正フォーマットとする
+                    default:
+                        throw new IllegalUcsFormatException(rowNum);
                     }
                 }
             }

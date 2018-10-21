@@ -54,117 +54,117 @@ class SettingAdapter extends ArrayAdapter<CommonDialogType> {
 
         // アイテムのビューをインフレートしてない場合は、アイテムから判別してインフレートする
         switch (item) {
-            case LIST_BUTTONS_POSITION:
-            case LIST_LICENSE:
-            case LIST_VERSION:
-                view = layoutInflater.inflate(R.layout.item_list_setting, parent, false);
-                break;
-            case LIST_BLOCK_EVEN_COLOR:
-            case LIST_BLOCK_ODD_COLOR:
-            case LIST_BLOCK_TEXT_COLOR:
-            case LIST_FRAME_COLOR:
-            case LIST_POINTER_COLOR:
-            case LIST_SELECTED_POINTER_COLOR:
-                view = layoutInflater.inflate(R.layout.item_list_setting_color, parent, false);
-                break;
-            case LIST_VIBRATION:
-                view = layoutInflater.inflate(R.layout.item_list_setting_switch, parent, false);
-                break;
-            default:
-                throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
+        case LIST_BUTTONS_POSITION:
+        case LIST_LICENSE:
+        case LIST_VERSION:
+            view = layoutInflater.inflate(R.layout.item_list_setting, parent, false);
+            break;
+        case LIST_BLOCK_EVEN_COLOR:
+        case LIST_BLOCK_ODD_COLOR:
+        case LIST_BLOCK_TEXT_COLOR:
+        case LIST_FRAME_COLOR:
+        case LIST_POINTER_COLOR:
+        case LIST_SELECTED_POINTER_COLOR:
+            view = layoutInflater.inflate(R.layout.item_list_setting_color, parent, false);
+            break;
+        case LIST_VIBRATION:
+            view = layoutInflater.inflate(R.layout.item_list_setting_switch, parent, false);
+            break;
+        default:
+            throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
         }
 
         // アイテムの判別
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         switch (item) {
-            case LIST_BLOCK_EVEN_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockEvenColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, CommonParameters.PREFERENCE_BLOCK_EVEN_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT)));
-                break;
-            case LIST_BLOCK_ODD_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockOddColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT)));
-                break;
-            case LIST_BLOCK_TEXT_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockTextColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT)));
-                break;
-            case LIST_BUTTONS_POSITION:
-                ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_buttonsPosition);
-                ((TextView) view.findViewById(R.id.settingSubTitle)).setText(getContext().getResources().getString((sharedPreferences.getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, true)) ? R.string.textView_listView_subTitle_right : R.string.textView_listView_subTitle_left));
-                break;
-            case LIST_FRAME_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_frameColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, CommonParameters.PREFERENCE_FRAME_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT)));
-                break;
-            case LIST_LICENSE:
-                ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_license);
-                view.findViewById(R.id.settingSubTitle).setVisibility(View.GONE);
-                break;
-            case LIST_POINTER_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_pointerColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, CommonParameters.PREFERENCE_POINTER_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT)));
-                view.findViewById(R.id.settingColorColor).getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT));
-                break;
-            case LIST_SELECTED_POINTER_COLOR:
-                ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_pointerSelectedColor);
-                view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
-                view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT),
-                        sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT)));
-                view.findViewById(R.id.settingColorColor).getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT));
-                break;
-            case LIST_VERSION:
-                // このアプリケーションのバージョンを取得
-                String versionName;
-                try {
-                    versionName = settingActivity.getPackageManager().getPackageInfo(settingActivity.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
-                } catch (PackageManager.NameNotFoundException e) {
-                    versionName = "Unknown";
-                }
-                ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_filter_songVersion);
-                ((TextView) view.findViewById(R.id.settingSubTitle)).setText(versionName);
-                break;
-            case LIST_VIBRATION:
-                ((TextView) view.findViewById(R.id.settingSwitchTitle)).setText(R.string.textView_listView_title_vibration);
-                view.findViewById(R.id.settingSwitchSubTitle).setVisibility(View.GONE);
-                final Switch vibrationSwitch = view.findViewById(R.id.settingSwitchSwitch);
-                vibrationSwitch.setChecked(sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, CommonParameters.PREFERENCE_VIBRATION_DEFAULT));
-                vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        // ログ出力
-                        Log.d(TAG, "onCheckedChanged:isChecked=" + vibrationSwitch.isChecked());
+        case LIST_BLOCK_EVEN_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockEvenColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, CommonParameters.PREFERENCE_BLOCK_EVEN_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT)));
+            break;
+        case LIST_BLOCK_ODD_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockOddColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT)));
+            break;
+        case LIST_BLOCK_TEXT_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_blockTextColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT)));
+            break;
+        case LIST_BUTTONS_POSITION:
+            ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_buttonsPosition);
+            ((TextView) view.findViewById(R.id.settingSubTitle)).setText(getContext().getResources().getString((sharedPreferences.getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, true)) ? R.string.textView_listView_subTitle_right : R.string.textView_listView_subTitle_left));
+            break;
+        case LIST_FRAME_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_frameColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, CommonParameters.PREFERENCE_FRAME_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT)));
+            break;
+        case LIST_LICENSE:
+            ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_listView_title_license);
+            view.findViewById(R.id.settingSubTitle).setVisibility(View.GONE);
+            break;
+        case LIST_POINTER_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_pointerColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, CommonParameters.PREFERENCE_POINTER_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT)));
+            view.findViewById(R.id.settingColorColor).getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT));
+            break;
+        case LIST_SELECTED_POINTER_COLOR:
+            ((TextView) view.findViewById(R.id.settingColorTitle)).setText(R.string.textView_listView_title_pointerSelectedColor);
+            view.findViewById(R.id.settingColorSubTitle).setVisibility(View.GONE);
+            view.findViewById(R.id.settingColorColor).setBackgroundColor(Color.rgb(
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT),
+                    sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT)));
+            view.findViewById(R.id.settingColorColor).getBackground().setAlpha(sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT));
+            break;
+        case LIST_VERSION:
+            // このアプリケーションのバージョンを取得
+            String versionName;
+            try {
+                versionName = settingActivity.getPackageManager().getPackageInfo(settingActivity.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                versionName = "Unknown";
+            }
+            ((TextView) view.findViewById(R.id.settingTitle)).setText(R.string.textView_filter_songVersion);
+            ((TextView) view.findViewById(R.id.settingSubTitle)).setText(versionName);
+            break;
+        case LIST_VIBRATION:
+            ((TextView) view.findViewById(R.id.settingSwitchTitle)).setText(R.string.textView_listView_title_vibration);
+            view.findViewById(R.id.settingSwitchSubTitle).setVisibility(View.GONE);
+            final Switch vibrationSwitch = view.findViewById(R.id.settingSwitchSwitch);
+            vibrationSwitch.setChecked(sharedPreferences.getBoolean(CommonParameters.PREFERENCE_VIBRATION, CommonParameters.PREFERENCE_VIBRATION_DEFAULT));
+            vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    // ログ出力
+                    Log.d(TAG, "onCheckedChanged:isChecked=" + vibrationSwitch.isChecked());
 
-                        sharedPreferences.edit()
-                                .putBoolean(CommonParameters.PREFERENCE_VIBRATION, vibrationSwitch.isChecked())
-                                .apply();
-                    }
-                });
-                break;
-            default:
-                throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
+                    sharedPreferences.edit()
+                            .putBoolean(CommonParameters.PREFERENCE_VIBRATION, vibrationSwitch.isChecked())
+                            .apply();
+                }
+            });
+            break;
+        default:
+            throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
         }
 
         return view;

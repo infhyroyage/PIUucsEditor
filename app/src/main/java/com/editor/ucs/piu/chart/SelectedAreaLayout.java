@@ -469,21 +469,21 @@ public final class SelectedAreaLayout extends FrameLayout {
 
                 // 上下/左右方向に回転する
                 switch (direction) {
-                    case UP_DOWN:
-                        switch (unitNote.column % 5) {
-                            case 0:
-                            case 3:
-                                unitNote.column++;
-                                break;
-                            case 1:
-                            case 4:
-                                unitNote.column--;
-                                break;
-                        }
+                case UP_DOWN:
+                    switch (unitNote.column % 5) {
+                    case 0:
+                    case 3:
+                        unitNote.column++;
                         break;
-                    case LEFT_RIGHT:
-                        unitNote.column = (byte) ((chartLayout.columnSize == 5) ? 14 - unitNote.column : 9 - unitNote.column);
+                    case 1:
+                    case 4:
+                        unitNote.column--;
                         break;
+                    }
+                    break;
+                case LEFT_RIGHT:
+                    unitNote.column = (byte) ((chartLayout.columnSize == 5) ? 14 - unitNote.column : 9 - unitNote.column);
+                    break;
                 }
                 rotatedNotesMap.put(unitNote.start * 10 + unitNote.column, unitNote);
             }
@@ -563,21 +563,21 @@ public final class SelectedAreaLayout extends FrameLayout {
 
             // 上下、左右回転を行う
             switch (direction) {
-                case UP_DOWN:
-                    switch (unitNote.column % 5) {
-                        case 0:
-                        case 3:
-                            unitNote.column++;
-                            break;
-                        case 1:
-                        case 4:
-                            unitNote.column--;
-                            break;
-                    }
+            case UP_DOWN:
+                switch (unitNote.column % 5) {
+                case 0:
+                case 3:
+                    unitNote.column++;
                     break;
-                case LEFT_RIGHT:
-                    unitNote.column = (byte) ((chartLayout.columnSize == 5) ? 14 - unitNote.column : 9 - unitNote.column);
+                case 1:
+                case 4:
+                    unitNote.column--;
                     break;
+                }
+                break;
+            case LEFT_RIGHT:
+                unitNote.column = (byte) ((chartLayout.columnSize == 5) ? 14 - unitNote.column : 9 - unitNote.column);
+                break;
             }
 
             // 回転前のノートのデータを更新

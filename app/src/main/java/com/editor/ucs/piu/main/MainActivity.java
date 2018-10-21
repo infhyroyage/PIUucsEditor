@@ -100,58 +100,58 @@ public class MainActivity extends AppCompatActivity {
         final MainActivity mainActivity = this;
 
         switch (requestCode) {
-            // 内部ストレージからucsファイルを読み込むパーミッションの許可を求めるダイアログの場合
-            case CommonParameters.PERMISSION_UCS_READ:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 上記ダイアログで「許可」を選択した場合、外部ストレージ上にあるucsファイルを指定させて、その絶対パスを取得するダイアログの表示
-                    new ChooserDialog().with(this)
-                            .withFilter(false, false, "ucs")
-                            .withStartFile(Environment.getExternalStorageDirectory().getPath())
-                            .withRowLayoutView(R.layout.item_chooser)
-                            .withResources(R.string.dialog_title_selectUcsFile, android.R.string.ok, android.R.string.cancel)
-                            .withChosenListener(new ChooserDialog.Result() {
-                                @Override
-                                public void onChoosePath(String path, File pathFile) {
-                                    // 指定したucsファイルの情報を読み込み、そのインスタンスを生成する
-                                    Ucs.read(mainActivity, path);
-                                }
-                            }).build().show();
-                } else {
-                    // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
-                    Toast.makeText(this, R.string.toast_permissionError_open, Toast.LENGTH_SHORT).show();
-                }
-                break;
-            // 内部ストレージへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
-            case CommonParameters.PERMISSION_UCS_SAVE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 上記ダイアログで「許可」を選択した場合、ucsファイルを書き込む
-                    mainActivity.ucs.write(mainActivity, mainActivity.ucs.fileDir);
-                } else {
-                    // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
-                    Toast.makeText(this, R.string.toast_permissionError_save, Toast.LENGTH_SHORT).show();
-                }
-                break;
-            // 内部ストレージの別ディレクトリへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
-            case CommonParameters.PERMISSION_UCS_SAVE_AS:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 上記ダイアログで「許可」を選択した場合、ディレクトリを指定させるダイアログの表示
-                    new ChooserDialog().with(this)
-                            .withFilter(true, false)
-                            .withStartFile(Environment.getExternalStorageDirectory().getPath())
-                            .withRowLayoutView(R.layout.item_chooser)
-                            .withResources(R.string.dialog_title_selectDirectory, android.R.string.ok, android.R.string.cancel)
-                            .withChosenListener(new ChooserDialog.Result() {
-                                @Override
-                                public void onChoosePath(String path, File pathFile) {
-                                    // 指定したディレクトリに対し、ucsファイルを書き込む
-                                    mainActivity.ucs.write(mainActivity, path);
-                                }
-                            }).build().show();
-                } else {
-                    // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
-                    Toast.makeText(this, R.string.toast_permissionError_save, Toast.LENGTH_SHORT).show();
-                }
-                break;
+        // 内部ストレージからucsファイルを読み込むパーミッションの許可を求めるダイアログの場合
+        case CommonParameters.PERMISSION_UCS_READ:
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 上記ダイアログで「許可」を選択した場合、外部ストレージ上にあるucsファイルを指定させて、その絶対パスを取得するダイアログの表示
+                new ChooserDialog().with(this)
+                        .withFilter(false, false, "ucs")
+                        .withStartFile(Environment.getExternalStorageDirectory().getPath())
+                        .withRowLayoutView(R.layout.item_chooser)
+                        .withResources(R.string.dialog_title_selectUcsFile, android.R.string.ok, android.R.string.cancel)
+                        .withChosenListener(new ChooserDialog.Result() {
+                            @Override
+                            public void onChoosePath(String path, File pathFile) {
+                                // 指定したucsファイルの情報を読み込み、そのインスタンスを生成する
+                                Ucs.read(mainActivity, path);
+                            }
+                        }).build().show();
+            } else {
+                // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
+                Toast.makeText(this, R.string.toast_permissionError_open, Toast.LENGTH_SHORT).show();
+            }
+            break;
+        // 内部ストレージへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
+        case CommonParameters.PERMISSION_UCS_SAVE:
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 上記ダイアログで「許可」を選択した場合、ucsファイルを書き込む
+                mainActivity.ucs.write(mainActivity, mainActivity.ucs.fileDir);
+            } else {
+                // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
+                Toast.makeText(this, R.string.toast_permissionError_save, Toast.LENGTH_SHORT).show();
+            }
+            break;
+        // 内部ストレージの別ディレクトリへucsファイルを書き込むパーミッションの許可を求めるダイアログの場合
+        case CommonParameters.PERMISSION_UCS_SAVE_AS:
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 上記ダイアログで「許可」を選択した場合、ディレクトリを指定させるダイアログの表示
+                new ChooserDialog().with(this)
+                        .withFilter(true, false)
+                        .withStartFile(Environment.getExternalStorageDirectory().getPath())
+                        .withRowLayoutView(R.layout.item_chooser)
+                        .withResources(R.string.dialog_title_selectDirectory, android.R.string.ok, android.R.string.cancel)
+                        .withChosenListener(new ChooserDialog.Result() {
+                            @Override
+                            public void onChoosePath(String path, File pathFile) {
+                                // 指定したディレクトリに対し、ucsファイルを書き込む
+                                mainActivity.ucs.write(mainActivity, path);
+                            }
+                        }).build().show();
+            } else {
+                // 上記ダイアログで「許可しない」を選択した場合、ucsファイルを開かなかった旨のトーストを出力
+                Toast.makeText(this, R.string.toast_permissionError_save, Toast.LENGTH_SHORT).show();
+            }
+            break;
         }
     }
 }

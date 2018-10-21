@@ -75,83 +75,83 @@ public class SettingDialogFragment extends DialogFragment {
             Log.d(TAG, "onCreateDialog:type=" + type);
 
             switch (type) {
-                case LIST_BLOCK_EVEN_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, 48), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, 96)}, builder, type);
-                case LIST_BLOCK_ODD_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, 96), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, 48), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, 0)}, builder, type);
-                case LIST_BLOCK_TEXT_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, 0)}, builder, type);
-                case LIST_BUTTONS_POSITION:
-                    // 選択した位置でのラジオボタンを取得
-                    final View positionView = inflater.inflate(R.layout.dialog_setting_position, (ViewGroup) settingActivity.findViewById(R.id.positionLayout));
-                    final RadioButton radioButtonRight = positionView.findViewById(R.id.positionRadioButtonRight);
-                    final RadioButton radioButtonLeft = positionView.findViewById(R.id.positionRadioButtonLeft);
+            case LIST_BLOCK_EVEN_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, 48), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, 96)}, builder, type);
+            case LIST_BLOCK_ODD_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, 96), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, 48), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, 0)}, builder, type);
+            case LIST_BLOCK_TEXT_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, 0)}, builder, type);
+            case LIST_BUTTONS_POSITION:
+                // 選択した位置でのラジオボタンを取得
+                final View positionView = inflater.inflate(R.layout.dialog_setting_position, (ViewGroup) settingActivity.findViewById(R.id.positionLayout));
+                final RadioButton radioButtonRight = positionView.findViewById(R.id.positionRadioButtonRight);
+                final RadioButton radioButtonLeft = positionView.findViewById(R.id.positionRadioButtonLeft);
 
-                    // 現在選択中の位置から、上記ラジオボタンの一方のみをチェック
-                    if (PreferenceManager.getDefaultSharedPreferences(settingActivity).getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT_DEFAULT)) {
+                // 現在選択中の位置から、上記ラジオボタンの一方のみをチェック
+                if (PreferenceManager.getDefaultSharedPreferences(settingActivity).getBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT_DEFAULT)) {
+                    radioButtonRight.setChecked(true);
+                    radioButtonLeft.setChecked(false);
+                } else {
+                    radioButtonLeft.setChecked(true);
+                    radioButtonRight.setChecked(false);
+                }
+
+                // ラジオボタンを一方のみ選択させるようにリスナーを生成
+                View.OnClickListener listenerRight = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
                         radioButtonRight.setChecked(true);
                         radioButtonLeft.setChecked(false);
-                    } else {
+                    }
+                };
+                View.OnClickListener listenerLeft = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
                         radioButtonLeft.setChecked(true);
                         radioButtonRight.setChecked(false);
                     }
+                };
 
-                    // ラジオボタンを一方のみ選択させるようにリスナーを生成
-                    View.OnClickListener listenerRight = new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            radioButtonRight.setChecked(true);
-                            radioButtonLeft.setChecked(false);
-                        }
-                    };
-                    View.OnClickListener listenerLeft = new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            radioButtonLeft.setChecked(true);
-                            radioButtonRight.setChecked(false);
-                        }
-                    };
+                // 位置選択のラジオボタンの下に表示するイメージビューを取得し、png画像とリスナーをセット
+                ImageView imageViewRight = positionView.findViewById(R.id.positionImageViewRight);
+                ImageView imageViewLeft = positionView.findViewById(R.id.positionImageViewLeft);
+                imageViewRight.setImageResource(R.drawable.position_buttons_right);
+                imageViewLeft.setImageResource(R.drawable.position_buttons_left);
 
-                    // 位置選択のラジオボタンの下に表示するイメージビューを取得し、png画像とリスナーをセット
-                    ImageView imageViewRight = positionView.findViewById(R.id.positionImageViewRight);
-                    ImageView imageViewLeft = positionView.findViewById(R.id.positionImageViewLeft);
-                    imageViewRight.setImageResource(R.drawable.position_buttons_right);
-                    imageViewLeft.setImageResource(R.drawable.position_buttons_left);
+                // ラジオボタンとイメージビューの2つにリスナーをセット
+                radioButtonRight.setOnClickListener(listenerRight);
+                radioButtonLeft.setOnClickListener(listenerLeft);
+                imageViewRight.setOnClickListener(listenerRight);
+                imageViewLeft.setOnClickListener(listenerLeft);
 
-                    // ラジオボタンとイメージビューの2つにリスナーをセット
-                    radioButtonRight.setOnClickListener(listenerRight);
-                    radioButtonLeft.setOnClickListener(listenerLeft);
-                    imageViewRight.setOnClickListener(listenerRight);
-                    imageViewLeft.setOnClickListener(listenerLeft);
+                builder.setIcon(android.R.drawable.ic_dialog_info)
+                        .setView(positionView)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // 選択したラジオボタンを保存
+                                PreferenceManager.getDefaultSharedPreferences(settingActivity)
+                                        .edit()
+                                        .putBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, radioButtonRight.isChecked())
+                                        .apply();
 
-                    builder.setIcon(android.R.drawable.ic_dialog_info)
-                            .setView(positionView)
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    // 選択したラジオボタンを保存
-                                    PreferenceManager.getDefaultSharedPreferences(settingActivity)
-                                            .edit()
-                                            .putBoolean(CommonParameters.PREFERENCE_BUTTONS_POSITION_RIGHT, radioButtonRight.isChecked())
-                                            .apply();
+                                // ボタン群のレイアウトの場所を更新
+                                MainCommonFunctions.updateLayoutPosition();
 
-                                    // ボタン群のレイアウトの場所を更新
-                                    MainCommonFunctions.updateLayoutPosition();
+                                // 変更後のボタン群のレイアウトの場所を詳細設定のリストビューのアダプターに反映
+                                SettingActivity.settingAdapter.notifyDataSetChanged();
+                            }
+                        }).setNegativeButton(android.R.string.cancel, null);
 
-                                    // 変更後のボタン群のレイアウトの場所を詳細設定のリストビューのアダプターに反映
-                                    SettingActivity.settingAdapter.notifyDataSetChanged();
-                                }
-                            }).setNegativeButton(android.R.string.cancel, null);
-
-                    return builder.create();
-                case LIST_FRAME_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)}, builder, type);
-                case LIST_POINTER_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)}, builder, type);
-                case LIST_SELECTED_POINTER_COLOR:
-                    return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, 255)}, builder, type);
-                default:
-                    throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
+                return builder.create();
+            case LIST_FRAME_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_RED, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_GREEN, 80), sharedPreferences.getInt(CommonParameters.PREFERENCE_FRAME_BLUE, 80)}, builder, type);
+            case LIST_POINTER_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_RED, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_GREEN, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_POINTER_BLUE, 0)}, builder, type);
+            case LIST_SELECTED_POINTER_COLOR:
+                return createColorChangeDialog(new int[]{sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, 64), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, 255), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, 0), sharedPreferences.getInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, 255)}, builder, type);
+            default:
+                throw new IllegalArgumentException("The CommonDialogType argument cannot be applied.");
             }
         }
     }
@@ -428,38 +428,38 @@ public class SettingDialogFragment extends DialogFragment {
                 // どの色のデフォルト値を取得するのか場合分けする
                 int red, green, blue;
                 switch (commonDialogType) {
-                    case LIST_BLOCK_EVEN_COLOR:
-                        red = CommonParameters.PREFERENCE_BLOCK_EVEN_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT;
-                        break;
-                    case LIST_BLOCK_ODD_COLOR:
-                        red = CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT;
-                        break;
-                    case LIST_BLOCK_TEXT_COLOR:
-                        red = CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT;
-                        break;
-                    case LIST_FRAME_COLOR:
-                        red = CommonParameters.PREFERENCE_FRAME_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT;
-                        break;
-                    case LIST_POINTER_COLOR:
-                        red = CommonParameters.PREFERENCE_POINTER_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT;
-                        break;
-                    case LIST_SELECTED_POINTER_COLOR:
-                        red = CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT;
-                        green = CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT;
-                        blue = CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT;
-                        break;
-                    default:
-                        throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
+                case LIST_BLOCK_EVEN_COLOR:
+                    red = CommonParameters.PREFERENCE_BLOCK_EVEN_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE_DEFAULT;
+                    break;
+                case LIST_BLOCK_ODD_COLOR:
+                    red = CommonParameters.PREFERENCE_BLOCK_ODD_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_BLOCK_ODD_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_BLOCK_ODD_BLUE_DEFAULT;
+                    break;
+                case LIST_BLOCK_TEXT_COLOR:
+                    red = CommonParameters.PREFERENCE_BLOCK_TEXT_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE_DEFAULT;
+                    break;
+                case LIST_FRAME_COLOR:
+                    red = CommonParameters.PREFERENCE_FRAME_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_FRAME_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_FRAME_BLUE_DEFAULT;
+                    break;
+                case LIST_POINTER_COLOR:
+                    red = CommonParameters.PREFERENCE_POINTER_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_POINTER_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_POINTER_BLUE_DEFAULT;
+                    break;
+                case LIST_SELECTED_POINTER_COLOR:
+                    red = CommonParameters.PREFERENCE_SELECTED_POINTER_RED_DEFAULT;
+                    green = CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN_DEFAULT;
+                    blue = CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE_DEFAULT;
+                    break;
+                default:
+                    throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
                 }
 
                 // デフォルトのRGB値をテキストビューにセット
@@ -477,12 +477,12 @@ public class SettingDialogFragment extends DialogFragment {
                 // デフォルトのAlpha値をフレームにセット
                 if (isAlpha) {
                     switch (commonDialogType) {
-                        case LIST_POINTER_COLOR:
-                            to.getBackground().setAlpha(CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT);
-                            break;
-                        case LIST_SELECTED_POINTER_COLOR:
-                            to.getBackground().setAlpha(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT);
-                            break;
+                    case LIST_POINTER_COLOR:
+                        to.getBackground().setAlpha(CommonParameters.PREFERENCE_POINTER_ALPHA_DEFAULT);
+                        break;
+                    case LIST_SELECTED_POINTER_COLOR:
+                        to.getBackground().setAlpha(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA_DEFAULT);
+                        break;
                     }
                 }
             }
@@ -496,115 +496,115 @@ public class SettingDialogFragment extends DialogFragment {
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(settingActivity);
                         // どの色を変更するのか場合分けする
                         switch (commonDialogType) {
-                            case LIST_BLOCK_EVEN_COLOR:
+                        case LIST_BLOCK_EVEN_COLOR:
+                            // 変更後のRGB値を保存
+                            sharedPreferences.edit()
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, redSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, greenSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, blueSeekBar.getProgress())
+                                    .apply();
+
+                            // 譜面のブロック内に存在する、すべての1列のレイアウトの色を更新
+                            MainCommonFunctions.updateColorColumnLayouts();
+                            break;
+                        case LIST_BLOCK_ODD_COLOR:
+                            // 変更後のRGB値を保存
+                            sharedPreferences.edit()
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, redSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, greenSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, blueSeekBar.getProgress())
+                                    .apply();
+
+                            // 譜面のブロック内に存在する、すべての1列のレイアウトの色を更新
+                            MainCommonFunctions.updateColorColumnLayouts();
+                            break;
+                        case LIST_BLOCK_TEXT_COLOR:
+                            // 変更後のRGB値を保存
+                            sharedPreferences.edit()
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, redSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, greenSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, blueSeekBar.getProgress())
+                                    .apply();
+
+                            // ポインターの位置が示すブロックの情報を更新
+                            MainCommonFunctions.updateTextsAtPointer();
+
+                            break;
+                        case LIST_FRAME_COLOR:
+                            // 変更後のRGB値を保存
+                            sharedPreferences.edit()
+                                    .putInt(CommonParameters.PREFERENCE_FRAME_RED, redSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_FRAME_GREEN, greenSeekBar.getProgress())
+                                    .putInt(CommonParameters.PREFERENCE_FRAME_BLUE, blueSeekBar.getProgress())
+                                    .apply();
+
+                            // ポインターの位置が示すブロックの情報を更新
+                            MainCommonFunctions.updateTextsAtPointer();
+
+                            break;
+                        case LIST_POINTER_COLOR:
+                            FrameLayout pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
+                            if (alphaSeekBar != null) {
+                                // 変更後のARGB値を保存
+                                sharedPreferences.edit()
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_ALPHA, alphaSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_RED, redSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_GREEN, greenSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_BLUE, blueSeekBar.getProgress())
+                                        .apply();
+                                // 変更後のポインターの色(通常モード)をポインターのレイアウトに反映
+                                pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
+                                pointerLayout.getBackground().setAlpha(alphaSeekBar.getProgress());
+                            } else {
                                 // 変更後のRGB値を保存
                                 sharedPreferences.edit()
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_RED, redSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_GREEN, greenSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_EVEN_BLUE, blueSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_RED, redSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_GREEN, greenSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_POINTER_BLUE, blueSeekBar.getProgress())
                                         .apply();
-
-                                // 譜面のブロック内に存在する、すべての1列のレイアウトの色を更新
-                                MainCommonFunctions.updateColorColumnLayouts();
-                                break;
-                            case LIST_BLOCK_ODD_COLOR:
-                                // 変更後のRGB値を保存
+                                // 変更後のポインターの色(通常モード)をポインターのレイアウトに反映
+                                pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
+                            }
+                            break;
+                        case LIST_SELECTED_POINTER_COLOR:
+                            pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
+                            ToggleButton selectedToggleButton = settingActivity.findViewById(R.id.toggleButtonEditSelect);
+                            if (alphaSeekBar != null) {
+                                // 変更後のARGB値を保存
                                 sharedPreferences.edit()
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_RED, redSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_GREEN, greenSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_ODD_BLUE, blueSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, alphaSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, redSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, greenSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, blueSeekBar.getProgress())
                                         .apply();
-
-                                // 譜面のブロック内に存在する、すべての1列のレイアウトの色を更新
-                                MainCommonFunctions.updateColorColumnLayouts();
-                                break;
-                            case LIST_BLOCK_TEXT_COLOR:
-                                // 変更後のRGB値を保存
-                                sharedPreferences.edit()
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_RED, redSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_GREEN, greenSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_BLOCK_TEXT_BLUE, blueSeekBar.getProgress())
-                                        .apply();
-
-                                // ポインターの位置が示すブロックの情報を更新
-                                MainCommonFunctions.updateTextsAtPointer();
-
-                                break;
-                            case LIST_FRAME_COLOR:
-                                // 変更後のRGB値を保存
-                                sharedPreferences.edit()
-                                        .putInt(CommonParameters.PREFERENCE_FRAME_RED, redSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_FRAME_GREEN, greenSeekBar.getProgress())
-                                        .putInt(CommonParameters.PREFERENCE_FRAME_BLUE, blueSeekBar.getProgress())
-                                        .apply();
-
-                                // ポインターの位置が示すブロックの情報を更新
-                                MainCommonFunctions.updateTextsAtPointer();
-
-                                break;
-                            case LIST_POINTER_COLOR:
-                                FrameLayout pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
-                                if (alphaSeekBar != null) {
-                                    // 変更後のARGB値を保存
-                                    sharedPreferences.edit()
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_ALPHA, alphaSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_RED, redSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_GREEN, greenSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_BLUE, blueSeekBar.getProgress())
-                                            .apply();
-                                    // 変更後のポインターの色(通常モード)をポインターのレイアウトに反映
+                                if (selectedToggleButton.isChecked()) {
+                                    // 変更後のポインターの色(譜面選択モード)をポインターのレイアウトに反映
                                     pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
                                     pointerLayout.getBackground().setAlpha(alphaSeekBar.getProgress());
-                                } else {
-                                    // 変更後のRGB値を保存
-                                    sharedPreferences.edit()
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_RED, redSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_GREEN, greenSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_POINTER_BLUE, blueSeekBar.getProgress())
-                                            .apply();
-                                    // 変更後のポインターの色(通常モード)をポインターのレイアウトに反映
+
+                                    // 選択領域の色を変更
+                                    FrameLayout selectedAreaLayout = settingActivity.findViewById(R.id.selectedAreaLayout);
+                                    selectedAreaLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
+                                    selectedAreaLayout.getBackground().setAlpha(alphaSeekBar.getProgress());
+                                }
+                            } else {
+                                // 変更後のRGB値を保存
+                                sharedPreferences.edit()
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, redSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, greenSeekBar.getProgress())
+                                        .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, blueSeekBar.getProgress())
+                                        .apply();
+                                if (selectedToggleButton.isChecked()) {
+                                    // 変更後のポインターの色(譜面選択モード)をポインターのレイアウトに反映
                                     pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                                }
-                                break;
-                            case LIST_SELECTED_POINTER_COLOR:
-                                pointerLayout = settingActivity.findViewById(R.id.pointerLayout);
-                                ToggleButton selectedToggleButton = settingActivity.findViewById(R.id.toggleButtonEditSelect);
-                                if (alphaSeekBar != null) {
-                                    // 変更後のARGB値を保存
-                                    sharedPreferences.edit()
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_ALPHA, alphaSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, redSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, greenSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, blueSeekBar.getProgress())
-                                            .apply();
-                                    if (selectedToggleButton.isChecked()) {
-                                        // 変更後のポインターの色(譜面選択モード)をポインターのレイアウトに反映
-                                        pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                                        pointerLayout.getBackground().setAlpha(alphaSeekBar.getProgress());
 
-                                        // 選択領域の色を変更
-                                        FrameLayout selectedAreaLayout = settingActivity.findViewById(R.id.selectedAreaLayout);
-                                        selectedAreaLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                                        selectedAreaLayout.getBackground().setAlpha(alphaSeekBar.getProgress());
-                                    }
-                                } else {
-                                    // 変更後のRGB値を保存
-                                    sharedPreferences.edit()
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_RED, redSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_GREEN, greenSeekBar.getProgress())
-                                            .putInt(CommonParameters.PREFERENCE_SELECTED_POINTER_BLUE, blueSeekBar.getProgress())
-                                            .apply();
-                                    if (selectedToggleButton.isChecked()) {
-                                        // 変更後のポインターの色(譜面選択モード)をポインターのレイアウトに反映
-                                        pointerLayout.setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-
-                                        // 選択領域の色を変更
-                                        settingActivity.findViewById(R.id.selectedAreaLayout).setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
-                                    }
+                                    // 選択領域の色を変更
+                                    settingActivity.findViewById(R.id.selectedAreaLayout).setBackgroundColor(Color.rgb(redSeekBar.getProgress(), greenSeekBar.getProgress(), blueSeekBar.getProgress()));
                                 }
-                                break;
-                            default:
-                                throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
+                            }
+                            break;
+                        default:
+                            throw new IllegalArgumentException("The commonDialogType argument cannot be applied.");
                         }
 
                         // 変更後のテキストの色を詳細設定のリストビューのアダプターに反映
